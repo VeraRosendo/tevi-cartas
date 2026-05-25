@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi — Você recebeu uma carta</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#e8ddd3;font-family:'Cormorant Garamond',serif;overflow:hidden}
+  .wrapper{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .envelope{width:min(520px,92vw);height:min(340px,60vw);background:#faf7f3;border-radius:8px;position:relative;box-shadow:0 24px 80px rgba(44,95,122,0.18),0 4px 20px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:transform 0.4s ease;overflow:hidden}
+  .envelope:hover{transform:translateY(-6px)}
+  .envelope::before{content:'';position:absolute;inset:0;border:12px solid transparent;border-image:repeating-linear-gradient(-45deg,#2C5F7A 0px,#2C5F7A 10px,#faf7f3 10px,#faf7f3 20px,#C4A882 20px,#C4A882 30px,#faf7f3 30px,#faf7f3 40px) 12;pointer-events:none}
+  .flap{position:absolute;top:0;left:0;right:0;height:50%;overflow:hidden;pointer-events:none}
+  .flap::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:0;border-left:min(260px,46vw) solid transparent;border-right:min(260px,46vw) solid transparent;border-top:min(130px,23vw) solid rgba(196,168,130,0.12)}
+  .diag-l{position:absolute;bottom:0;left:0;width:0;height:0;border-bottom:min(170px,30vw) solid rgba(44,95,122,0.06);border-right:min(260px,46vw) solid transparent;pointer-events:none}
+  .diag-r{position:absolute;bottom:0;right:0;width:0;height:0;border-bottom:min(170px,30vw) solid rgba(196,168,130,0.08);border-left:min(260px,46vw) solid transparent;pointer-events:none}
+  .logo{position:absolute;top:28px;left:50%;transform:translateX(-50%)}
+  .selo{position:absolute;top:20px;right:24px;width:44px;height:52px;border:1.5px solid rgba(196,168,130,0.5);border-radius:2px;display:flex;align-items:center;justify-content:center}
+  .remetente{position:absolute;bottom:20px;left:24px;font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:#C4A882;letter-spacing:0.15em;text-transform:uppercase}
+  .conteudo{display:flex;flex-direction:column;align-items:center;gap:16px;position:relative;z-index:2;padding:20px;text-align:center}
+  .titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,38px);font-weight:300;color:#2C5F7A;letter-spacing:0.04em;line-height:1.2}
+  .linha{width:60px;height:1px;background:#C4A882;opacity:0.7}
+  .sub{font-family:'Jost',sans-serif;font-size:clamp(11px,2vw,14px);font-weight:300;color:#C4A882;letter-spacing:0.25em;text-transform:uppercase;animation:piscar 2.5s ease-in-out infinite}
+  @keyframes piscar{0%,100%{opacity:1}50%{opacity:0.4}}
+  .wrapper.saindo{animation:fadeOut 0.6s ease forwards}
+  @keyframes fadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}
+</style>
+</head>
+<body>
+<div class="wrapper" id="wrapper" onclick="abrir()">
+  <div class="envelope">
+    <div class="flap"></div><div class="diag-l"></div><div class="diag-r"></div>
+    <div class="logo"><svg viewBox="0 0 120 60" width="80" height="40" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="eL"><circle cx="44" cy="30" r="24"/></clipPath><clipPath id="eR"><circle cx="64" cy="30" r="24"/></clipPath></defs><circle cx="44" cy="30" r="24" fill="none" stroke="#2C5F7A" stroke-width="1" opacity="0.6"/><circle cx="64" cy="30" r="24" fill="none" stroke="#C4A882" stroke-width="1" opacity="0.6"/><path d="M38 12 Q43 9 49 10 Q56 11 59 18 Q63 26 60 36 Q57 44 50 47 Q43 49 38 44 Q31 39 31 30 Q31 19 38 12Z" fill="#2C5F7A" opacity="0.2" clip-path="url(#eL)"/><path d="M57 17 Q61 14 66 15 Q72 16 74 22 Q77 29 74 37 Q71 43 65 45 Q59 46 56 41 Q51 35 53 26 Q54 20 57 17Z" fill="#C4A882" opacity="0.35" clip-path="url(#eR)"/></svg></div>
+    <div class="selo"><svg viewBox="0 0 30 30" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="sL"><circle cx="12" cy="15" r="9"/></clipPath><clipPath id="sR"><circle cx="18" cy="15" r="9"/></clipPath></defs><circle cx="12" cy="15" r="9" fill="none" stroke="#2C5F7A" stroke-width="0.8" opacity="0.5"/><circle cx="18" cy="15" r="9" fill="none" stroke="#C4A882" stroke-width="0.8" opacity="0.5"/><path d="M10 7 Q13 5 16 6 Q19 7 20 11 Q21 15 19 19 Q17 22 14 22 Q11 21 10 18 Q8 14 9 10 Q9 8 10 7Z" fill="#2C5F7A" opacity="0.2" clip-path="url(#sL)"/><path d="M15 9 Q17 8 19 9 Q21 10 22 13 Q22 16 20 19 Q18 21 16 20 Q14 19 13 16 Q13 12 15 9Z" fill="#C4A882" opacity="0.3" clip-path="url(#sR)"/></svg></div>
+    <div class="conteudo">
+      <div class="titulo">Você recebeu<br>uma carta.</div>
+      <div class="linha"></div>
+      <div class="sub">toque para abrir</div>
+    </div>
+    <div class="remetente">Te Vi</div>
+  </div>
+</div>
+<script>function abrir(){document.getElementById('wrapper').classList.add('saindo');setTimeout(()=>{window.location.href='carta-relacionamento-6.html'},600)}</script>
+</body></html>
