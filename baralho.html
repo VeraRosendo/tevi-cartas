@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi — Baralho</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #2C5F7A;
+    --azul-claro: #7FB3C8;
+    --areia: #f4ede4;
+    --areia-escura: #e8ddd3;
+    --terra: #C4A882;
+    --texto: #111111;
+    --texto-suave: #5a4d42;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--areia); color: var(--texto); font-family: 'Jost', sans-serif; font-weight: 300; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(160deg, #1a2e3b 0%, #2c5f7a 100%);
+    padding: 48px 24px 56px;
+    text-align: center;
+  }
+  header a { text-decoration: none; }
+  .header-logo { margin-bottom: 20px; display: inline-block; }
+  .header-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 8vw, 72px);
+    font-weight: 300;
+    color: var(--areia);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .header-titulo span { color: var(--azul-claro); font-style: italic; }
+  .header-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2.5vw, 19px);
+    font-style: italic;
+    color: rgba(244,237,228,0.65);
+    margin-top: 14px;
+    letter-spacing: 0.03em;
+  }
+  .header-divisor { width: 40px; height: 1px; background: var(--terra); margin: 24px auto; opacity: 0.7; }
+  .header-volta {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(244,237,228,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 4px;
+    transition: color 0.3s;
+  }
+  .header-volta:hover { color: var(--terra); }
+
+  /* INTRO */
+  .intro {
+    max-width: 680px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-style: italic;
+    color: var(--texto-suave);
+    line-height: 1.8;
+  }
+  .intro-divisor { width: 40px; height: 1px; background: var(--terra); margin: 32px auto; opacity: 0.5; }
+
+  /* TEMAS */
+  .temas { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+  .tema {
+    margin-bottom: 56px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .tema-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid rgba(196,168,130,0.25);
+    margin-bottom: 24px;
+  }
+
+  .tema-icone { font-size: 28px; line-height: 1; }
+
+  .tema-info { flex: 1; }
+
+  .tema-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 300;
+    color: var(--azul);
+    line-height: 1.2;
+  }
+
+  .tema-subtitulo {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-top: 4px;
+  }
+
+  /* GRID DE CARTAS */
+  .cartas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .carta-item {
+    background: #faf7f3;
+    border: 1px solid rgba(196,168,130,0.2);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .carta-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44,95,122,0.12);
+    border-color: rgba(196,168,130,0.5);
+  }
+
+  .carta-subtipo {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+
+  .carta-preview {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--texto);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .carta-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    transition: gap 0.3s ease;
+  }
+
+  .carta-item:hover .carta-btn { gap: 10px; }
+  .carta-btn::after { content: '→'; font-size: 13px; }
+
+  /* EM BREVE */
+  .carta-item.em-breve {
+    opacity: 0.45;
+    pointer-events: none;
+    background: var(--areia-escura);
+  }
+
+  .carta-item.em-breve .carta-btn { color: var(--terra); }
+  .carta-item.em-breve .carta-btn::after { content: ''; }
+
+  /* RODAPÉ */
+  footer {
+    background: #1a2e3b;
+    color: rgba(244,237,228,0.35);
+    text-align: center;
+    padding: 48px 24px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer .nome { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--areia); display: block; margin-bottom: 10px; }
+  footer a { color: var(--azul-claro); text-decoration: none; }
+  footer .cvv { margin-top: 16px; font-size: 11px; color: rgba(244,237,228,0.2); }
+
+  @media (max-width: 480px) {
+    .cartas-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html">
+    <div class="header-logo">
+      <svg viewBox="0 0 200 100" width="100" height="50" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="hL"><circle cx="78" cy="50" r="40"/></clipPath>
+          <clipPath id="hR"><circle cx="108" cy="50" r="40"/></clipPath>
+        </defs>
+        <circle cx="78" cy="50" r="40" fill="none" stroke="rgba(127,179,200,0.7)" stroke-width="1"/>
+        <circle cx="108" cy="50" r="40" fill="none" stroke="rgba(196,168,130,0.7)" stroke-width="1"/>
+        <path d="M70 18 Q77 13 85 14 Q95 15 99 25 Q104 36 101 48 Q98 60 89 67 Q80 73 72 70 Q62 66 59 54 Q55 40 60 28 Q64 20 70 18Z" fill="rgba(127,179,200,0.35)" clip-path="url(#hL)"/>
+        <path d="M100 28 Q105 23 112 24 Q120 25 123 33 Q127 42 124 52 Q121 61 114 65 Q107 68 102 64 Q95 59 94 50 Q93 39 100 28Z" fill="rgba(196,168,130,0.5)" clip-path="url(#hR)"/>
+      </svg>
+    </div>
+    <h1 class="header-titulo">Te <span>Vi</span></h1>
+  </a>
+  <p class="header-tagline">Escolha uma carta. Envie pelo WhatsApp.</p>
+  <div class="header-divisor"></div>
+  <a href="index.html" class="header-volta">← voltar ao início</a>
+</header>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>Para quando o coração sabe, mas as palavras não saem.<br>Escolha a carta que combina com o que você sente.</p>
+  <div class="intro-divisor"></div>
+</div>
+
+<!-- TEMAS -->
+<div class="temas">
+
+  <!-- SAÚDE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌿</div>
+      <div class="tema-info">
+        <div class="tema-nome">Saúde</div>
+        <div class="tema-subtitulo">Melhoras</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-melhoras-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo próximo</div>
+        <div class="carta-preview">"Fiquei sabendo que você não está bem. Estou aqui para o que precisar."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <a href="envelope-melhoras-2.html" class="carta-item">
+        <div class="carta-subtipo">Pouca intimidade</div>
+        <div class="carta-preview">"Soube que você está passando por um momento difícil de saúde. Torço pela sua recuperação."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <a href="envelope-melhoras-3.html" class="carta-item">
+        <div class="carta-subtipo">Carinhosa</div>
+        <div class="carta-preview">"Seu corpo está pedindo descanso — e você merece se cuidar sem culpa."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <a href="envelope-melhoras-4.html" class="carta-item">
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Melhoras. Estou torcendo por você todos os dias."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- DATAS FESTIVAS -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">✨</div>
+      <div class="tema-info">
+        <div class="tema-nome">Datas Festivas</div>
+        <div class="tema-subtitulo">Dia dos Namorados</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-namorados-celebracao.html" class="carta-item">
+        <div class="carta-subtipo">Para quem está sozinho</div>
+        <div class="carta-preview">"Hoje vim celebrar com você. Porque esse dia é seu também — inteiro, sem desconto."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <a href="envelope-namorados-amor.html" class="carta-item">
+        <div class="carta-subtipo">Para namorados</div>
+        <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CUIDADO EMOCIONAL — EM BREVE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Cuidado Emocional</div>
+        <div class="tema-subtitulo">Em breve</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Semana pesada</div>
+        <div class="carta-preview">"Percebi que essa semana foi pesada demais..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Mais quieto que o normal</div>
+        <div class="carta-preview">"Percebi que você está diferente ultimamente..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Ansiedade</div>
+        <div class="carta-preview">"Dias de ansiedade são exaustivos de um jeito que quem não sente não entende..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECONEXÃO — EM BREVE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🧵</div>
+      <div class="tema-info">
+        <div class="tema-nome">Reconexão</div>
+        <div class="tema-subtitulo">Em breve</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Sumimos</div>
+        <div class="carta-preview">"A vida foi correndo e a gente foi perdendo o ritmo de se falar..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Saudade</div>
+        <div class="carta-preview">"Não tem motivo especial — só saudade mesmo..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERDAS E LUTO — EM BREVE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🕊️</div>
+      <div class="tema-info">
+        <div class="tema-nome">Perdas e Luto</div>
+        <div class="tema-subtitulo">Em breve</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Perda de pessoa querida</div>
+        <div class="carta-preview">"Não existem palavras para esse momento. Só quero que saiba que não está sozinho..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Perda de animal</div>
+        <div class="carta-preview">"Quem nunca amou um animal não entende — mas eu entendo..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARREIRA — EM BREVE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌱</div>
+      <div class="tema-info">
+        <div class="tema-nome">Carreira e Trabalho</div>
+        <div class="tema-subtitulo">Em breve</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Promoção</div>
+        <div class="carta-preview">"Isso não veio do nada — veio de muito trabalho e dedicação..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+      <div class="carta-item em-breve">
+        <div class="carta-subtipo">Demissão</div>
+        <div class="carta-preview">"Você deu muito a esse lugar. O próximo capítulo vai reconhecer isso..."</div>
+        <div class="carta-btn">Em breve</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+  <span class="nome">Te Vi</span>
+  <p>Menos que um café. Mais duradouro que qualquer um.</p>
+  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
+  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
+</footer>
+
+</body>
+</html>
