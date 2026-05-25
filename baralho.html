@@ -19,14 +19,12 @@
   html { scroll-behavior: smooth; }
   body { background: var(--areia); color: var(--texto); font-family: 'Jost', sans-serif; font-weight: 300; }
 
-  /* HEADER */
   header {
     background: linear-gradient(160deg, #1a2e3b 0%, #2c5f7a 100%);
     padding: 48px 24px 56px;
     text-align: center;
   }
   header a { text-decoration: none; }
-  .header-logo { margin-bottom: 20px; display: inline-block; }
   .header-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 8vw, 72px); font-weight: 300; color: var(--areia); letter-spacing: 0.04em; line-height: 1; }
   .header-titulo span { color: var(--azul-claro); font-style: italic; }
   .header-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(14px, 2.5vw, 19px); font-style: italic; color: rgba(244,237,228,0.65); margin-top: 14px; letter-spacing: 0.03em; }
@@ -34,62 +32,79 @@
   .header-volta { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: rgba(244,237,228,0.4); letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 4px; transition: color 0.3s; }
   .header-volta:hover { color: var(--terra); }
 
-  /* TEMAS */
   .temas { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
-
   .tema { margin-bottom: 56px; }
-
   .tema-header { display: flex; align-items: center; gap: 16px; padding: 24px 0 16px; border-bottom: 1px solid rgba(196,168,130,0.25); margin-bottom: 24px; }
-
   .tema-icone { font-size: 28px; line-height: 1; }
-
   .tema-info { flex: 1; }
-
   .tema-nome { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 300; color: var(--azul); line-height: 1.2; }
-
   .tema-subtitulo { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-top: 4px; }
 
-  /* GRID */
   .cartas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 
-  /* CARTA COM LINK */
+  /* CARTA COM LINK — gratuita */
   a.carta-item {
     background: #faf7f3;
     border: 1px solid rgba(196,168,130,0.2);
     border-radius: 8px;
     padding: 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: flex; flex-direction: column; gap: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
+    position: relative;
   }
   a.carta-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(44,95,122,0.12); border-color: rgba(196,168,130,0.5); }
 
-  /* CARTA SEM LINK */
+  /* CARTA PAGA — com cadeado */
   div.carta-item {
-    background: var(--areia-escura);
-    border: 1px solid rgba(196,168,130,0.12);
+    background: #faf7f3;
+    border: 1px solid rgba(196,168,130,0.2);
     border-radius: 8px;
     padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Overlay desfocado nas cartas pagas */
+  div.carta-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(244,237,228,0.55);
+    backdrop-filter: blur(1.5px);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  /* Cadeado dourado */
+  div.carta-item .cadeado {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: var(--terra);
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    opacity: 0.55;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(196,168,130,0.4);
+  }
+
+  div.carta-item .cadeado svg {
+    width: 14px;
+    height: 14px;
+    fill: white;
   }
 
   .carta-subtipo { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); }
-
   .carta-preview { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--texto); line-height: 1.6; flex: 1; }
-
   .carta-btn { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); display: flex; align-items: center; gap: 6px; margin-top: 4px; transition: gap 0.3s ease; }
   a.carta-item:hover .carta-btn { gap: 10px; }
   .carta-btn::after { content: '→'; font-size: 13px; }
 
-  .carta-btn.em-breve { color: var(--terra); }
-  .carta-btn.em-breve::after { content: ''; }
-
-  /* RODAPÉ */
   footer { background: #1a2e3b; color: rgba(244,237,228,0.35); text-align: center; padding: 48px 24px; font-size: 12px; letter-spacing: 0.1em; }
   footer .nome { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--areia); display: block; margin-bottom: 10px; }
   footer a { color: var(--azul-claro); text-decoration: none; }
@@ -102,18 +117,6 @@
 
 <header>
   <a href="index.html">
-    <div class="header-logo">
-      <svg viewBox="0 0 200 100" width="100" height="50" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <clipPath id="hL"><circle cx="78" cy="50" r="40"/></clipPath>
-          <clipPath id="hR"><circle cx="108" cy="50" r="40"/></clipPath>
-        </defs>
-        <circle cx="78" cy="50" r="40" fill="none" stroke="rgba(127,179,200,0.7)" stroke-width="1"/>
-        <circle cx="108" cy="50" r="40" fill="none" stroke="rgba(196,168,130,0.7)" stroke-width="1"/>
-        <path d="M70 18 Q77 13 85 14 Q95 15 99 25 Q104 36 101 48 Q98 60 89 67 Q80 73 72 70 Q62 66 59 54 Q55 40 60 28 Q64 20 70 18Z" fill="rgba(127,179,200,0.35)" clip-path="url(#hL)"/>
-        <path d="M100 28 Q105 23 112 24 Q120 25 123 33 Q127 42 124 52 Q121 61 114 65 Q107 68 102 64 Q95 59 94 50 Q93 39 100 28Z" fill="rgba(196,168,130,0.5)" clip-path="url(#hR)"/>
-      </svg>
-    </div>
     <h1 class="header-titulo">Te <span>Vi</span></h1>
   </a>
   <p class="header-tagline">Escolha uma carta. Envie pelo WhatsApp.</p>
@@ -123,13 +126,187 @@
 
 <div class="temas">
 
-  <!-- DATAS FESTIVAS — CARRO CHEFE -->
+  <!-- ANIVERSÁRIO -->
   <div class="tema">
     <div class="tema-header">
       <div class="tema-icone">✨</div>
       <div class="tema-info">
-        <div class="tema-nome">Datas Festivas</div>
-        <div class="tema-subtitulo">Dia dos Namorados</div>
+        <div class="tema-nome">Aniversário</div>
+        <div class="tema-subtitulo">Datas festivas</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-aniversario-1.html" class="carta-item">
+        <div class="carta-subtipo">No dia</div>
+        <div class="carta-preview">"Hoje é seu dia — e eu não poderia deixar passar sem dizer o quanto fico feliz que você existe."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Simples</div>
+        <div class="carta-preview">"Feliz aniversário! Que esse ano seja cheio de coisas boas."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Atrasado</div>
+        <div class="carta-preview">"A vontade de te desejar coisas boas não tem prazo. Parabéns, mesmo que tarde!"</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSIEDADE -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Ansiedade</div>
+        <div class="tema-subtitulo">Cuidado emocional</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-ansiedade-1.html" class="carta-item">
+        <div class="carta-subtipo">Acolhedora</div>
+        <div class="carta-preview">"Dias de ansiedade são exaustivos de um jeito que quem não sente não consegue entender."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Gentil</div>
+        <div class="carta-preview">"Nem todo dia precisa ser vencido, alguns dias só precisam passar."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Isso não precisa ser enfrentado sozinho. Eu estou aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEBÊ -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">✨</div>
+      <div class="tema-info">
+        <div class="tema-nome">Bebê chegando</div>
+        <div class="tema-subtitulo">Celebrações</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-bebe-1.html" class="carta-item">
+        <div class="carta-subtipo">Para os pais</div>
+        <div class="carta-preview">"Uma vida nova chegando — e que vida sortuda, que vai ser recebida com tanto amor."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Bebê a caminho! Que alegria. Estou torcendo por vocês."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BURNOUT -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Burnout</div>
+        <div class="tema-subtitulo">Cuidado emocional</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-burnout-1.html" class="carta-item">
+        <div class="carta-subtipo">Reconhecimento</div>
+        <div class="carta-preview">"Burnout não é fraqueza. É o sinal de alguém que deu muito de si por muito tempo."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Parar não é desistir. É se respeitar."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARREIRA -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌱</div>
+      <div class="tema-info">
+        <div class="tema-nome">Carreira e Trabalho</div>
+        <div class="tema-subtitulo">Conquistas · Eventos difíceis</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-promocao-1.html" class="carta-item">
+        <div class="carta-subtipo">Promoção</div>
+        <div class="carta-preview">"Isso não veio do nada — veio de muito trabalho, muita dedicação e muita competência."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Novo emprego</div>
+        <div class="carta-preview">"Deu certo! Você vai arrasar — eu conheço você e sei do que é capaz."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Primeiro emprego</div>
+        <div class="carta-preview">"Primeiro emprego é um marco que a gente nunca esquece."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Retorno ao mercado</div>
+        <div class="carta-preview">"Voltar exige coragem — e você teve."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Evento inesperado</div>
+        <div class="carta-preview">"Amanhã é um novo dia e os planos são restabelecidos."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONQUISTA -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌟</div>
+      <div class="tema-info">
+        <div class="tema-nome">Conquista após luta longa</div>
+        <div class="tema-subtitulo">Celebração silenciosa</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-conquista-1.html" class="carta-item">
+        <div class="carta-subtipo">Emocionante</div>
+        <div class="carta-preview">"Você não desistiu — mesmo quando pareceu impossível. E chegou lá."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Valeu cada passo. Parabéns — de verdade."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA DOS NAMORADOS -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">✨</div>
+      <div class="tema-info">
+        <div class="tema-nome">Dia dos Namorados</div>
+        <div class="tema-subtitulo">Datas festivas</div>
       </div>
     </div>
     <div class="cartas-grid">
@@ -138,21 +315,226 @@
         <div class="carta-preview">"Hoje vim celebrar com você. Porque esse dia é seu também — inteiro, sem desconto."</div>
         <div class="carta-btn">Abrir carta</div>
       </a>
-      <a href="envelope-namorados-amor.html" class="carta-item">
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
         <div class="carta-subtipo">Para namorados</div>
         <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
         <div class="carta-btn">Abrir carta</div>
-      </a>
+      </div>
     </div>
   </div>
 
-  <!-- SAÚDE -->
+  <!-- DEPRESSÃO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Depressão</div>
+        <div class="tema-subtitulo">Cuidado emocional</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-depressao-1.html" class="carta-item">
+        <div class="carta-subtipo">Simples e presente</div>
+        <div class="carta-preview">"Não tenho respostas, mas tenho presença. Estou aqui — hoje e nos dias que vierem."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Você não está só nisso. Estou aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESCULPAS -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🧵</div>
+      <div class="tema-info">
+        <div class="tema-nome">Desculpas</div>
+        <div class="tema-subtitulo">Sumiço · Erro · Briga · Demora</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-desculpa-sumico-1.html" class="carta-item">
+        <div class="carta-subtipo">Sumiço</div>
+        <div class="carta-preview">"Sumimos — e a culpa é minha. Queria que soubesse que você continua aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Errei</div>
+        <div class="carta-preview">"Não estou aqui para me justificar. Só queria que soubesse que me arrependo."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Briga</div>
+        <div class="carta-preview">"Prefiro resolver do que deixar essa distância crescer."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Demora em responder</div>
+        <div class="carta-preview">"Demorei para responder. Você merecia mais atenção."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FALÊNCIA -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌱</div>
+      <div class="tema-info">
+        <div class="tema-nome">Falência ou fechamento de negócio</div>
+        <div class="tema-subtitulo">Eventos difíceis</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-falencia-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo</div>
+        <div class="carta-preview">"O encerramento dói de um jeito que vai além do financeiro. Estou torcendo pelo seu recomeço."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"O que você construiu importou. E você vai reconstruir."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMATURA -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🌟</div>
+      <div class="tema-info">
+        <div class="tema-nome">Formatura</div>
+        <div class="tema-subtitulo">Conquistas</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-formatura-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo</div>
+        <div class="carta-preview">"Foram anos de esforço, noites longas e muita persistência. Hoje é dia de celebrar tudo isso."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Para pais</div>
+        <div class="carta-preview">"Você formou — e eu não caibo no peito de orgulho."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Formou! Dia de festa. Merecia muito."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCENTIVO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Incentivo</div>
+        <div class="tema-subtitulo">Dores que paralisam · Provas · Sonhos</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-incentivo-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo próximo</div>
+        <div class="carta-preview">"Só quero que saiba que vejo o quanto você se dedicou."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Não passou em provas</div>
+        <div class="carta-preview">"Para você não é se — é quando."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Frustração de sonho</div>
+        <div class="carta-preview">"Alguns sonhos chegam diferentes. Significa abrir novas portas."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Aprovação em concurso</div>
+        <div class="carta-preview">"Passou! Todo o sacrifício valeu cada segundo."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERNAÇÃO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Internação</div>
+        <div class="tema-subtitulo">Saúde · Cuidado emocional</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-internacao-1.html" class="carta-item">
+        <div class="carta-subtipo">Antes ou durante</div>
+        <div class="carta-preview">"Você está no lugar certo, recebendo o cuidado que precisa. Te espero."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Sem julgamento</div>
+        <div class="carta-preview">"Pedir ajuda quando a dor é grande é um ato de coragem enorme."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LUTO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🕊️</div>
+      <div class="tema-info">
+        <div class="tema-nome">Luto e Perdas</div>
+        <div class="tema-subtitulo">Pessoa · Animal · Data difícil</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-luto-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo próximo</div>
+        <div class="carta-preview">"Não existem palavras para esse momento. Só quero que você sinta que não está sozinho."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Data difícil</div>
+        <div class="carta-preview">"Hoje eu lembro junto com você. Estou aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Perda de animal</div>
+        <div class="carta-preview">"Perder um companheiro assim é perder um pedaço do lar, do coração."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MELHORAS -->
   <div class="tema">
     <div class="tema-header">
       <div class="tema-icone">🌿</div>
       <div class="tema-info">
-        <div class="tema-nome">Saúde</div>
-        <div class="tema-subtitulo">Melhoras</div>
+        <div class="tema-nome">Melhoras</div>
+        <div class="tema-subtitulo">Saúde</div>
       </div>
     </div>
     <div class="cartas-grid">
@@ -161,140 +543,251 @@
         <div class="carta-preview">"Fiquei sabendo que você não está bem. Estou aqui para o que precisar."</div>
         <div class="carta-btn">Abrir carta</div>
       </a>
-      <a href="envelope-melhoras-2.html" class="carta-item">
-        <div class="carta-subtipo">Pouca intimidade</div>
-        <div class="carta-preview">"Soube que você está passando por um momento difícil de saúde. Torço pela sua recuperação."</div>
-        <div class="carta-btn">Abrir carta</div>
-      </a>
-      <a href="envelope-melhoras-3.html" class="carta-item">
-        <div class="carta-subtipo">Carinhosa</div>
-        <div class="carta-preview">"Seu corpo está pedindo descanso — e você merece se cuidar sem culpa."</div>
-        <div class="carta-btn">Abrir carta</div>
-      </a>
-      <a href="envelope-melhoras-4.html" class="carta-item">
-        <div class="carta-subtipo">Curta</div>
-        <div class="carta-preview">"Melhoras. Estou torcendo por você todos os dias."</div>
-        <div class="carta-btn">Abrir carta</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- CUIDADO EMOCIONAL — SEM LINK -->
-  <div class="tema">
-    <div class="tema-header">
-      <div class="tema-icone">🫂</div>
-      <div class="tema-info">
-        <div class="tema-nome">Cuidado Emocional</div>
-        <div class="tema-subtitulo">Em breve</div>
-      </div>
-    </div>
-    <div class="cartas-grid">
       <div class="carta-item">
-        <div class="carta-subtipo">Semana pesada</div>
-        <div class="carta-preview">"Percebi que essa semana foi pesada demais..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Cirurgia</div>
+        <div class="carta-preview">"Sei que amanhã não é um dia fácil. Mas você não está sozinho."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
       <div class="carta-item">
-        <div class="carta-subtipo">Mais quieto que o normal</div>
-        <div class="carta-preview">"Percebi que você está diferente ultimamente..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Diagnóstico grave</div>
+        <div class="carta-preview">"Começa uma jornada que desejo seja muito breve, de cura."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
       <div class="carta-item">
-        <div class="carta-subtipo">Ansiedade</div>
-        <div class="carta-preview">"Dias de ansiedade são exaustivos de um jeito que quem não sente não entende..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Tratamento longo</div>
+        <div class="carta-preview">"Cada sessão é um passo. Cada dia é uma vitória."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
     </div>
   </div>
 
-  <!-- RECONEXÃO — SEM LINK -->
+  <!-- RECONEXÃO -->
   <div class="tema">
     <div class="tema-header">
       <div class="tema-icone">🧵</div>
       <div class="tema-info">
         <div class="tema-nome">Reconexão</div>
-        <div class="tema-subtitulo">Em breve</div>
+        <div class="tema-subtitulo">Saudade · Sumimos · Oi</div>
       </div>
     </div>
     <div class="cartas-grid">
-      <div class="carta-item">
+      <a href="envelope-sumimos-1.html" class="carta-item">
         <div class="carta-subtipo">Sumimos</div>
-        <div class="carta-preview">"A vida foi correndo e a gente foi perdendo o ritmo de se falar..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
-      </div>
+        <div class="carta-preview">"Você nunca saiu da minha cabeça. Saudade de você — de verdade."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
       <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
         <div class="carta-subtipo">Saudade</div>
-        <div class="carta-preview">"Não tem motivo especial — só saudade mesmo..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="carta-preview">"Não tem motivo especial — só saudade mesmo."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Vi e lembrei</div>
+        <div class="carta-preview">"Vi algo que me fez pensar imediatamente em você."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Passando para dizer oi</div>
+        <div class="carta-preview">"Oi. Só isso. Oi."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
     </div>
   </div>
 
-  <!-- PERDAS E LUTO — SEM LINK -->
+  <!-- RELACIONAMENTOS -->
   <div class="tema">
     <div class="tema-header">
-      <div class="tema-icone">🕊️</div>
+      <div class="tema-icone">🤍</div>
       <div class="tema-info">
-        <div class="tema-nome">Perdas e Luto</div>
-        <div class="tema-subtitulo">Em breve</div>
+        <div class="tema-nome">Relacionamentos</div>
+        <div class="tema-subtitulo">Término · Casamento · Traição · Amizade · Filho</div>
       </div>
     </div>
     <div class="cartas-grid">
+      <a href="envelope-relacionamento-1.html" class="carta-item">
+        <div class="carta-subtipo">Fim de relacionamento</div>
+        <div class="carta-preview">"O fim de um relacionamento carrega um luto que muita gente não reconhece — mas é real."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
       <div class="carta-item">
-        <div class="carta-subtipo">Perda de pessoa querida</div>
-        <div class="carta-preview">"Não existem palavras para esse momento. Só quero que saiba que não está sozinho..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Fim de casamento</div>
+        <div class="carta-preview">"Não precisa estar bem agora. Estou aqui — sem julgamento, sem pressa."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
       <div class="carta-item">
-        <div class="carta-subtipo">Perda de animal</div>
-        <div class="carta-preview">"Quem nunca amou um animal não entende — mas eu entendo..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Traição</div>
+        <div class="carta-preview">"Você não precisa saber ainda o que sentir. Só precisa saber que não está só."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Filho que se afastou</div>
+        <div class="carta-preview">"Essa dor de ver um filho se afastar é silenciosa e funda."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Amizade que acabou</div>
+        <div class="carta-preview">"Perder uma amizade dói de um jeito que pouca gente reconhece."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
     </div>
   </div>
 
-  <!-- CARREIRA — SEM LINK -->
+  <!-- SEMANA PESADA -->
   <div class="tema">
     <div class="tema-header">
-      <div class="tema-icone">🌱</div>
+      <div class="tema-icone">🫂</div>
       <div class="tema-info">
-        <div class="tema-nome">Carreira e Trabalho</div>
-        <div class="tema-subtitulo">Em breve</div>
+        <div class="tema-nome">Semana pesada</div>
+        <div class="tema-subtitulo">Cuidado emocional</div>
       </div>
     </div>
     <div class="cartas-grid">
+      <a href="envelope-semana-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo</div>
+        <div class="carta-preview">"Essa semana parece ter sido pesada demais. Torço para o fim de semana trazer um respiro."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
       <div class="carta-item">
-        <div class="carta-subtipo">Promoção</div>
-        <div class="carta-preview">"Isso não veio do nada — veio de muito trabalho e dedicação..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Colega</div>
+        <div class="carta-preview">"Foi uma semana difícil. Descansa. Você merece."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
       <div class="carta-item">
-        <div class="carta-subtipo">Demissão</div>
-        <div class="carta-preview">"Você deu muito a esse lugar. O próximo capítulo vai reconhecer isso..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Semana pesada passa. Você fica."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
     </div>
   </div>
 
-  <!-- CELEBRAÇÃO SILENCIOSA — SEM LINK -->
+  <!-- SOLIDÃO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Solidão</div>
+        <div class="tema-subtitulo">Apoio silencioso</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-solidao-1.html" class="carta-item">
+        <div class="carta-subtipo">Com carinho</div>
+        <div class="carta-preview">"Estou aqui — e fico feliz que você existe na minha vida."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Simples</div>
+        <div class="carta-preview">"Só passando para dizer que penso em você. Estou aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Você não está sozinho. Estou aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TORCENDO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Torcendo por você</div>
+        <div class="tema-subtitulo">Apoio silencioso</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-torcendo-1.html" class="carta-item">
+        <div class="carta-subtipo">Calorosa</div>
+        <div class="carta-preview">"Não sei o que você está enfrentando — mas queria que soubesse que estou torcendo por você."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Sei que está difícil</div>
+        <div class="carta-preview">"Não precisa me contar tudo. Estou aqui, do jeito que você precisar."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Não precisa estar bem</div>
+        <div class="carta-preview">"Basta ser você. E basta."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VITÓRIA -->
   <div class="tema">
     <div class="tema-header">
       <div class="tema-icone">🌟</div>
       <div class="tema-info">
-        <div class="tema-nome">Celebração Silenciosa</div>
-        <div class="tema-subtitulo">Em breve</div>
+        <div class="tema-nome">Vitória silenciosa</div>
+        <div class="tema-subtitulo">Celebração silenciosa</div>
       </div>
     </div>
     <div class="cartas-grid">
-      <div class="carta-item">
+      <a href="envelope-vitoria-pequena-1.html" class="carta-item">
         <div class="carta-subtipo">Pequena vitória</div>
-        <div class="carta-preview">"Pode parecer pequeno para os outros — mas eu sei o que custou para você..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="carta-preview">"Pode parecer pequeno para os outros — mas eu sei o que custou para você."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Sem reconhecimento</div>
+        <div class="carta-preview">"Talvez ninguém tenha falado ainda — mas eu vi. Você conseguiu."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOCÊ ESTÁ QUIETO -->
+  <div class="tema">
+    <div class="tema-header">
+      <div class="tema-icone">🫂</div>
+      <div class="tema-info">
+        <div class="tema-nome">Você está mais quieto</div>
+        <div class="tema-subtitulo">Cuidado emocional</div>
+      </div>
+    </div>
+    <div class="cartas-grid">
+      <a href="envelope-quieto-1.html" class="carta-item">
+        <div class="carta-subtipo">Amigo próximo</div>
+        <div class="carta-preview">"Percebi que você está diferente ultimamente. Não precisa explicar nada."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Colega</div>
+        <div class="carta-preview">"Não sei o que está acontecendo, mas percebi que algo mudou."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
       <div class="carta-item">
-        <div class="carta-subtipo">Você conseguiu</div>
-        <div class="carta-preview">"Talvez ninguém tenha falado ainda — mas eu vi. Você conseguiu..."</div>
-        <div class="carta-btn em-breve">Em breve</div>
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Familiar</div>
+        <div class="carta-preview">"Você está mais quieto e isso não passou despercebido."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Estou aqui. Conte comigo."</div>
+        <div class="carta-btn">Abrir carta</div>
       </div>
     </div>
   </div>
