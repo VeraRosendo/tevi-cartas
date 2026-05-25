@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#e8ddd3;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+  .scene{width:315px;height:440px;perspective:1200px}
+  .card{width:100%;height:100%;position:relative;transform-style:preserve-3d;border-radius:16px;animation:abrirFechar 14s cubic-bezier(0.4,0,0.2,1) forwards}
+  @keyframes abrirFechar{0%{transform:rotateY(0deg)}14%{transform:rotateY(180deg)}86%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+  .card-face{position:absolute;width:100%;height:100%;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 20px 60px rgba(44,95,122,0.22),0 4px 16px rgba(0,0,0,0.10)}
+  .card-face::before{content:'';position:absolute;inset:6px;border-radius:12px;border:1px solid rgba(196,168,130,0.3);pointer-events:none;z-index:2}
+  .card-back{background:#faf7f3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px}
+  .back-sawubona{font-size:28px;font-weight:400;color:#2C5F7A;letter-spacing:0.08em;margin-top:12px}
+  .back-traducao{font-size:14px;font-style:italic;color:#7a6a5a;letter-spacing:0.1em;margin-top:3px;display:flex;align-items:center;gap:8px}
+  .back-traducao::before,.back-traducao::after{content:'·';color:#C4A882}
+  .back-divider{width:1px;height:18px;background:#C4A882;opacity:0.7;margin:10px 0}
+  .back-shikoba{font-size:28px;font-weight:400;color:#C4A882;letter-spacing:0.08em}
+  .back-traducao2{font-size:14px;font-style:italic;color:#7a6a5a;letter-spacing:0.1em;margin-top:3px;display:flex;align-items:center;gap:8px}
+  .back-traducao2::before,.back-traducao2::after{content:'·';color:#C4A882}
+  .back-line{width:32px;height:1px;background:#C4A882;opacity:0.6;margin-top:14px}
+  .back-tevi{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.3em;color:#2C5F7A;text-transform:uppercase;margin-top:10px;font-weight:300}
+  .card-front{background:#faf7f3;transform:rotateY(180deg);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:28px 32px}
+  .corner{position:absolute;z-index:3}
+  .corner-tl{top:16px;left:16px}
+  .corner-br{bottom:16px;right:16px;transform:rotate(180deg)}
+  .card-message-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:52px 8px 36px}
+  .linha{font-size:16px;font-weight:300;font-style:italic;color:#111111;line-height:1.9;text-align:center;letter-spacing:0.01em;opacity:0;transform:translateY(8px)}
+  .linha.espaco{height:12px}
+  .linha.icone{font-style:normal;font-size:22px;margin-top:4px}
+  .l1{animation:surgir 0.7s ease forwards 2.5s,sumir 0.5s ease forwards 11s}
+  .l2{animation:surgir 0.7s ease forwards 3.5s,sumir 0.5s ease forwards 11s}
+  .l3{animation:surgir 0.7s ease forwards 4.5s,sumir 0.5s ease forwards 11s}
+  .l4{animation:surgir 0.7s ease forwards 5.5s,sumir 0.5s ease forwards 11s}
+  .l5{animation:surgir 0.7s ease forwards 6.5s,sumir 0.5s ease forwards 11s}
+  .l6{animation:surgir 0.7s ease forwards 7.5s,sumir 0.5s ease forwards 11s}
+  @keyframes surgir{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes sumir{from{opacity:1}to{opacity:0}}
+  .card-bottom{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:surgir 0.8s ease forwards 8.5s,sumir 0.5s ease forwards 11s}
+  .card-line{width:40px;height:1px;background:#C4A882;opacity:0.6}
+  .card-name{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.28em;color:#C4A882;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="scene"><div class="card">
+  <div class="card-face card-back">
+    <svg viewBox="0 0 200 200" width="148" height="148" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="bL"><circle cx="88" cy="98" r="58"/></clipPath><clipPath id="bR"><circle cx="118" cy="98" r="58"/></clipPath></defs>
+      <circle cx="88" cy="98" r="58" fill="none" stroke="#2C5F7A" stroke-width="1.5" opacity="0.85"/>
+      <circle cx="118" cy="98" r="58" fill="none" stroke="#C4A882" stroke-width="1.5" opacity="0.85"/>
+      <path d="M80 55 Q87 49 96 49 Q107 49 112 59 Q118 71 115 90 Q112 108 102 119 Q93 128 83 126 Q71 123 67 108 Q62 89 67 72 Q72 58 80 55Z" fill="#2C5F7A" opacity="0.35" clip-path="url(#bL)"/>
+      <ellipse cx="86" cy="148" rx="28" ry="16" fill="#2C5F7A" opacity="0.18" clip-path="url(#bL)"/>
+      <path d="M108 68 Q113 63 120 63 Q128 63 132 71 Q137 80 135 95 Q133 109 125 118 Q118 125 110 123 Q101 120 98 108 Q94 93 98 80 Q102 69 108 68Z" fill="#C4A882" opacity="0.55" clip-path="url(#bR)"/>
+      <ellipse cx="116" cy="148" rx="22" ry="13" fill="#C4A882" opacity="0.25" clip-path="url(#bR)"/>
+    </svg>
+    <div class="back-sawubona">Sawubona.</div>
+    <div class="back-traducao">Eu te vejo.</div>
+    <div class="back-divider"></div>
+    <div class="back-shikoba">Shikoba.</div>
+    <div class="back-traducao2">Então eu existo para você.</div>
+    <div class="back-line"></div>
+    <div class="back-tevi">Te Vi</div>
+  </div>
+  <div class="card-face card-front">
+    <div class="corner corner-tl"><svg viewBox="0 0 60 60" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="cL1"><circle cx="26" cy="28" r="18"/></clipPath><clipPath id="cR1"><circle cx="38" cy="28" r="18"/></clipPath></defs><circle cx="26" cy="28" r="18" fill="none" stroke="#2C5F7A" stroke-width="1.4" opacity="0.85"/><circle cx="38" cy="28" r="18" fill="none" stroke="#C4A882" stroke-width="1.4" opacity="0.85"/><path d="M22 15 Q26 12 30 13 Q35 14 37 20 Q39 27 36 33 Q33 38 28 37 Q23 36 21 30 Q19 23 22 15Z" fill="#2C5F7A" opacity="0.35" clip-path="url(#cL1)"/><path d="M34 19 Q37 17 40 18 Q43 20 43 25 Q43 30 40 34 Q37 37 34 36 Q30 34 30 29 Q30 23 34 19Z" fill="#C4A882" opacity="0.5" clip-path="url(#cR1)"/></svg></div>
+    <div class="corner corner-br"><svg viewBox="0 0 60 60" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="cL2"><circle cx="26" cy="28" r="18"/></clipPath><clipPath id="cR2"><circle cx="38" cy="28" r="18"/></clipPath></defs><circle cx="26" cy="28" r="18" fill="none" stroke="#2C5F7A" stroke-width="1.4" opacity="0.85"/><circle cx="38" cy="28" r="18" fill="none" stroke="#C4A882" stroke-width="1.4" opacity="0.85"/><path d="M22 15 Q26 12 30 13 Q35 14 37 20 Q39 27 36 33 Q33 38 28 37 Q23 36 21 30 Q19 23 22 15Z" fill="#2C5F7A" opacity="0.35" clip-path="url(#cL2)"/><path d="M34 19 Q37 17 40 18 Q43 20 43 25 Q43 30 40 34 Q37 37 34 36 Q30 34 30 29 Q30 23 34 19Z" fill="#C4A882" opacity="0.5" clip-path="url(#cR2)"/></svg></div>
+    <div class="card-message-area"><p class="linha l1">Foi uma semana difícil.</p><p class="linha espaco"></p><p class="linha l2">Descansa.</p><p class="linha espaco"></p><p class="linha l3">Você merece.</p><p class="linha espaco"></p><p class="linha icone l4">🫂</p></div>
+    <div class="card-bottom"><div class="card-line"></div><span class="card-name">Te Vi</span></div>
+  </div>
+</div></div>
+</body></html>
