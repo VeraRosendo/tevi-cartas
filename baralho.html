@@ -388,6 +388,27 @@
   .btn-enviar-wpp:hover { background: #b89468; transform: translateY(-1px); }
 
   /* BOTÃO ADICIONAR NA CARTA COM CADEADO */
+  /* Carta com cadeado — layout corrigido */
+  div.carta-item {
+    display: flex;
+    flex-direction: column;
+  }
+  div.carta-item .cadeado {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: var(--terra);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(196,168,130,0.4);
+    flex-shrink: 0;
+  }
+  div.carta-item .cadeado svg { width: 14px; height: 14px; fill: white; }
   button.btn-add {
     font-family: 'Jost', sans-serif;
     font-size: 10px;
@@ -401,15 +422,12 @@
     padding: 8px 14px;
     cursor: pointer;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 12px;
     transition: all 0.25s ease;
     display: block;
     text-align: center;
-    position: static;
-    border-radius: 4px !important;
-    width: 100% !important;
-    height: auto !important;
-    box-shadow: none !important;
+    flex-shrink: 0;
+    align-self: stretch;
   }
   button.btn-add:hover {
     background: var(--terra);
