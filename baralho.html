@@ -388,37 +388,39 @@
   .btn-enviar-wpp:hover { background: #b89468; transform: translateY(-1px); }
 
   /* BOTÃO ADICIONAR NA CARTA COM CADEADO */
-  div.carta-item .btn-add {
+  button.btn-add {
     font-family: 'Jost', sans-serif;
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--terra);
-    background: none;
-    border: 1px solid rgba(196,168,130,0.35);
+    background: transparent;
+    border: 1px solid rgba(196,168,130,0.4);
     border-radius: 4px;
-    padding: 7px 12px;
+    padding: 8px 14px;
     cursor: pointer;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 8px;
     transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    display: block;
+    text-align: center;
+    position: static;
+    border-radius: 4px !important;
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
   }
-  div.carta-item .btn-add:hover {
+  button.btn-add:hover {
     background: var(--terra);
     color: white;
     border-color: var(--terra);
   }
-  div.carta-item .btn-add.adicionado {
-    background: rgba(196,168,130,0.12);
+  button.btn-add.adicionado {
+    background: rgba(44,95,122,0.08);
     color: var(--azul);
     border-color: rgba(44,95,122,0.3);
   }
-  div.carta-item .btn-add.adicionado::before { content: '✓ '; }
 
 </style>
 </head>
@@ -481,7 +483,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Simples">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Simples</div>
         <div class="carta-preview">"Feliz aniversário! Que esse ano seja cheio de coisas boas."</div>
@@ -489,7 +491,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Atrasado">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Atrasado</div>
         <div class="carta-preview">"A vontade de te desejar coisas boas não tem prazo. Parabéns, mesmo que tarde!"</div>
@@ -517,7 +519,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Gentil">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Gentil</div>
         <div class="carta-preview">"Nem todo dia precisa ser vencido, alguns dias só precisam passar."</div>
@@ -525,7 +527,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Isso não precisa ser enfrentado sozinho. Eu estou aqui."</div>
@@ -553,7 +555,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Bebê a caminho! Que alegria. Estou torcendo por vocês."</div>
@@ -581,7 +583,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Parar não é desistir. É se respeitar."</div>
@@ -609,7 +611,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Novo emprego">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Novo emprego</div>
         <div class="carta-preview">"Deu certo! Você vai arrasar — eu conheço você e sei do que é capaz."</div>
@@ -617,7 +619,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Primeiro emprego">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Primeiro emprego</div>
         <div class="carta-preview">"Primeiro emprego é um marco que a gente nunca esquece."</div>
@@ -625,7 +627,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Retorno ao mercado">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Retorno ao mercado</div>
         <div class="carta-preview">"Voltar exige coragem — e você teve."</div>
@@ -633,7 +635,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Evento inesperado">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Evento inesperado</div>
         <div class="carta-preview">"Amanhã é um novo dia e os planos são restabelecidos."</div>
@@ -661,7 +663,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Valeu cada passo. Parabéns — de verdade."</div>
@@ -689,7 +691,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Para namorados">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Para namorados</div>
         <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
@@ -717,7 +719,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Você não está só nisso. Estou aqui."</div>
@@ -745,7 +747,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Errei">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Errei</div>
         <div class="carta-preview">"Não estou aqui para me justificar. Só queria que soubesse que me arrependo."</div>
@@ -753,7 +755,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Briga">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Briga</div>
         <div class="carta-preview">"Prefiro resolver do que deixar essa distância crescer."</div>
@@ -761,7 +763,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Demora em responder">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Demora em responder</div>
         <div class="carta-preview">"Demorei para responder. Você merecia mais atenção."</div>
@@ -789,7 +791,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"O que você construiu importou. E você vai reconstruir."</div>
@@ -817,7 +819,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Para pais">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Para pais</div>
         <div class="carta-preview">"Você formou — e eu não caibo no peito de orgulho."</div>
@@ -825,7 +827,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Formou! Dia de festa. Merecia muito."</div>
@@ -853,7 +855,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Não passou em provas">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Não passou em provas</div>
         <div class="carta-preview">"Para você não é se — é quando."</div>
@@ -861,7 +863,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Frustração de sonho">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Frustração de sonho</div>
         <div class="carta-preview">"Alguns sonhos chegam diferentes. Significa abrir novas portas."</div>
@@ -869,7 +871,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Aprovação em concurso">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Aprovação em concurso</div>
         <div class="carta-preview">"Passou! Todo o sacrifício valeu cada segundo."</div>
@@ -897,7 +899,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Sem julgamento">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Sem julgamento</div>
         <div class="carta-preview">"Pedir ajuda quando a dor é grande é um ato de coragem enorme."</div>
@@ -925,7 +927,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Data difícil">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Data difícil</div>
         <div class="carta-preview">"Hoje eu lembro junto com você. Estou aqui."</div>
@@ -933,7 +935,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Perda de animal">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Perda de animal</div>
         <div class="carta-preview">"Perder um companheiro assim é perder um pedaço do lar, do coração."</div>
@@ -961,7 +963,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Cirurgia">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Cirurgia</div>
         <div class="carta-preview">"Sei que amanhã não é um dia fácil. Mas você não está sozinho."</div>
@@ -969,7 +971,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Diagnóstico grave">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Diagnóstico grave</div>
         <div class="carta-preview">"Começa uma jornada que desejo seja muito breve, de cura."</div>
@@ -977,7 +979,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Tratamento longo">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Tratamento longo</div>
         <div class="carta-preview">"Cada sessão é um passo. Cada dia é uma vitória."</div>
@@ -1005,7 +1007,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Saudade">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Saudade</div>
         <div class="carta-preview">"Não tem motivo especial — só saudade mesmo."</div>
@@ -1013,7 +1015,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Vi e lembrei">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Vi e lembrei</div>
         <div class="carta-preview">"Vi algo que me fez pensar imediatamente em você."</div>
@@ -1021,7 +1023,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Passando para dizer oi">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Passando para dizer oi</div>
         <div class="carta-preview">"Oi. Só isso. Oi."</div>
@@ -1049,7 +1051,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Fim de casamento">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Fim de casamento</div>
         <div class="carta-preview">"Não precisa estar bem agora. Estou aqui — sem julgamento, sem pressa."</div>
@@ -1057,7 +1059,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Traição">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Traição</div>
         <div class="carta-preview">"Você não precisa saber ainda o que sentir. Só precisa saber que não está só."</div>
@@ -1065,7 +1067,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Filho que se afastou">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Filho que se afastou</div>
         <div class="carta-preview">"Essa dor de ver um filho se afastar é silenciosa e funda."</div>
@@ -1073,7 +1075,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Amizade que acabou">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Amizade que acabou</div>
         <div class="carta-preview">"Perder uma amizade dói de um jeito que pouca gente reconhece."</div>
@@ -1101,7 +1103,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Colega">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Colega</div>
         <div class="carta-preview">"Foi uma semana difícil. Descansa. Você merece."</div>
@@ -1109,7 +1111,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Semana pesada passa. Você fica."</div>
@@ -1137,7 +1139,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Simples">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Simples</div>
         <div class="carta-preview">"Só passando para dizer que penso em você. Estou aqui."</div>
@@ -1145,7 +1147,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Você não está sozinho. Estou aqui."</div>
@@ -1173,7 +1175,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Sei que está difícil">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Sei que está difícil</div>
         <div class="carta-preview">"Não precisa me contar tudo. Estou aqui, do jeito que você precisar."</div>
@@ -1181,7 +1183,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Não precisa estar bem">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Não precisa estar bem</div>
         <div class="carta-preview">"Basta ser você. E basta."</div>
@@ -1209,7 +1211,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Sem reconhecimento">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Sem reconhecimento</div>
         <div class="carta-preview">"Talvez ninguém tenha falado ainda — mas eu vi. Você conseguiu."</div>
@@ -1237,7 +1239,7 @@
       </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Colega">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Colega</div>
         <div class="carta-preview">"Não sei o que está acontecendo, mas percebi que algo mudou."</div>
@@ -1245,7 +1247,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Familiar">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Familiar</div>
         <div class="carta-preview">"Você está mais quieto e isso não passou despercebido."</div>
@@ -1253,7 +1255,7 @@
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="carta">Quero esta carta</button>
+      <button class="btn-add" onclick="adicionarCarta(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
         <div class="carta-subtipo">Curta</div>
         <div class="carta-preview">"Estou aqui. Conte comigo."</div>
