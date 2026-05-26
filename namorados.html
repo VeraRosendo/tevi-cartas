@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi — Dia dos Namorados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #2C5F7A;
+    --azul-claro: #7FB3C8;
+    --areia: #f4ede4;
+    --areia-escura: #e8ddd3;
+    --terra: #C4A882;
+    --texto: #111111;
+    --texto-suave: #5a4d42;
+    --rosa: #c47a7a;
+    --rosa-claro: #e8c4c4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--areia); color: var(--texto); font-family: 'Jost', sans-serif; font-weight: 300; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(160deg, #1a2e3b 0%, #2c5f7a 60%, #4a3040 100%);
+    padding: 48px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🤍';
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.04;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  header a { text-decoration: none; }
+  .header-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 8vw, 72px); font-weight: 300; color: var(--areia); letter-spacing: 0.04em; line-height: 1; }
+  .header-titulo span { color: var(--azul-claro); font-style: italic; }
+  .header-subtitulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 3vw, 26px); font-style: italic; color: var(--rosa-claro); margin-top: 10px; letter-spacing: 0.03em; }
+  .header-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(13px, 2vw, 17px); font-style: italic; color: rgba(244,237,228,0.55); margin-top: 12px; letter-spacing: 0.03em; }
+  .header-divisor { width: 40px; height: 1px; background: var(--rosa); margin: 22px auto; opacity: 0.6; }
+  .header-volta { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: rgba(244,237,228,0.4); letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 4px; transition: color 0.3s; }
+  .header-volta:hover { color: var(--terra); }
+
+  /* DATA */
+  .data-destaque {
+    background: linear-gradient(135deg, #4a3040, #2c5f7a);
+    color: var(--areia);
+    text-align: center;
+    padding: 16px 24px;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .data-destaque strong { color: var(--rosa-claro); font-weight: 400; }
+
+  /* CONTEÚDO */
+  .conteudo { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* CARTAS */
+  .secao-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 300;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+  .secao-subtitulo {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 24px;
+  }
+  .secao-divisor { width: 40px; height: 1px; background: rgba(196,168,130,0.4); margin: 16px 0 32px; }
+
+  .cartas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 56px; }
+
+  a.carta-item {
+    background: #faf7f3;
+    border: 1px solid rgba(196,168,130,0.2);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+  }
+  a.carta-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(44,95,122,0.12); border-color: rgba(196,168,130,0.5); }
+
+  div.carta-item {
+    background: #faf7f3;
+    border: 1px solid rgba(196,168,130,0.2);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  div.carta-item .cadeado {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: var(--terra);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(196,168,130,0.4);
+  }
+  div.carta-item .cadeado svg { width: 14px; height: 14px; fill: white; }
+
+  .carta-subtipo { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); }
+  .carta-preview { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--texto); line-height: 1.6; flex: 1; }
+  .carta-btn { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); display: flex; align-items: center; gap: 6px; margin-top: 4px; transition: gap 0.3s ease; }
+  a.carta-item:hover .carta-btn { gap: 10px; }
+  .carta-btn::after { content: '→'; font-size: 13px; }
+
+  /* BLOCO DE VENDA */
+  .venda-bloco {
+    background: linear-gradient(135deg, #1a2e3b 0%, #2c5f7a 100%);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin: 16px 0 56px;
+    color: var(--areia);
+    position: relative;
+    overflow: hidden;
+  }
+  .venda-bloco::before {
+    content: '🤍';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.05;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .venda-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--areia);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .venda-subtitulo {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rosa-claro);
+    margin-bottom: 32px;
+  }
+  .planos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .plano {
+    background: rgba(244,237,228,0.07);
+    border: 1px solid rgba(244,237,228,0.12);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .plano:hover { background: rgba(244,237,228,0.12); border-color: rgba(196,168,130,0.4); }
+  .plano-nome {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 8px;
+  }
+  .plano-detalhe {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(244,237,228,0.5);
+    margin-bottom: 12px;
+  }
+  .plano-preco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--areia);
+    line-height: 1;
+  }
+  .plano-preco span {
+    font-size: 14px;
+    color: rgba(244,237,228,0.5);
+    font-weight: 300;
+  }
+  .plano.destaque {
+    background: rgba(196,168,130,0.15);
+    border-color: rgba(196,168,130,0.4);
+  }
+  .plano.destaque .plano-preco { color: var(--terra); }
+
+  .venda-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--terra);
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .venda-cta:hover { background: #b89468; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,168,130,0.3); }
+  .venda-cta::after { content: '→'; font-size: 14px; }
+
+  .venda-nota {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    color: rgba(244,237,228,0.3);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer { background: #1a2e3b; color: rgba(244,237,228,0.35); text-align: center; padding: 48px 24px; font-size: 12px; letter-spacing: 0.1em; }
+  footer .nome { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--areia); display: block; margin-bottom: 10px; }
+  footer a { color: var(--azul-claro); text-decoration: none; }
+  footer .cvv { margin-top: 16px; font-size: 11px; color: rgba(244,237,228,0.2); }
+
+  @media (max-width: 480px) {
+    .cartas-grid { grid-template-columns: 1fr; }
+    .venda-bloco { padding: 32px 24px; }
+    .planos { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="baralho.html">
+    <h1 class="header-titulo">Te <span>Vi</span></h1>
+  </a>
+  <p class="header-subtitulo">Dia dos Namorados</p>
+  <p class="header-tagline">Para quando o coração sabe, mas as palavras não saem — escolha uma carta.</p>
+  <div class="header-divisor"></div>
+  <a href="baralho.html" class="header-volta">← voltar ao baralho</a>
+</header>
+
+<div class="data-destaque">
+  <strong>12 de junho</strong> · Escolha uma carta. Copie o link e envie.
+</div>
+
+<div class="conteudo">
+
+  <!-- CARTAS GRATUITAS -->
+  <p class="secao-titulo">Cartas gratuitas</p>
+  <p class="secao-subtitulo">Escolha, copie o link e envie pelo WhatsApp</p>
+  <div class="secao-divisor"></div>
+
+  <div class="cartas-grid">
+    <a href="envelope-namorados-celebracao.html" class="carta-item">
+      <div class="carta-subtipo">Para quem está sozinho</div>
+      <div class="carta-preview">"Hoje vim celebrar com você. Porque esse dia é seu também — inteiro, sem desconto."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </a>
+    <a href="envelope-namorados-1.html" class="carta-item">
+      <div class="carta-subtipo">Para namorados</div>
+      <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </a>
+  </div>
+
+  <!-- CARTAS COM CADEADO -->
+  <p class="secao-titulo">Mais cartas</p>
+  <p class="secao-subtitulo">Desbloqueie avulsa ou em kit</p>
+  <div class="secao-divisor"></div>
+
+  <div class="cartas-grid">
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Amor maduro</div>
+      <div class="carta-preview">"Com você aprendi que amor também é silêncio confortável e presença sem precisar de motivo."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Início de relacionamento</div>
+      <div class="carta-preview">"Ainda estou descobrindo você — e cada descoberta me faz querer saber mais."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-02-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Distância</div>
+      <div class="carta-preview">"A distância não mudou nada do que sinto. Só fez eu ter mais certeza."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Amigo especial</div>
+      <div class="carta-preview">"Hoje é dia de dizer: você é uma das pessoas mais importantes da minha vida."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Curta</div>
+      <div class="carta-preview">"Hoje e sempre. Você sabe."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+    <div class="carta-item">
+      <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+      <div class="carta-subtipo">Para quem não está mais aqui</div>
+      <div class="carta-preview">"Esse dia me faz sentir sua falta de um jeito que não tem palavras. Mas você está aqui."</div>
+      <div class="carta-btn">Abrir carta</div>
+    </div>
+  </div>
+
+  <!-- BLOCO DE VENDA -->
+  <div class="venda-bloco">
+    <p class="venda-subtitulo">Desbloqueie as cartas · Pix rápido</p>
+    <p class="venda-titulo">Escolha o que faz mais sentido para você</p>
+
+    <div class="planos">
+      <div class="plano">
+        <p class="plano-nome">Carta avulsa</p>
+        <p class="plano-detalhe">1 carta à sua escolha</p>
+        <p class="plano-preco"><span>R$</span> 3,90</p>
+      </div>
+      <div class="plano destaque">
+        <p class="plano-nome">Kit 3 cartas</p>
+        <p class="plano-detalhe">Escolha qualquer 3</p>
+        <p class="plano-preco"><span>R$</span> 7,00</p>
+      </div>
+      <div class="plano">
+        <p class="plano-nome">Baralho</p>
+        <p class="plano-detalhe">10 cartas à sua escolha</p>
+        <p class="plano-preco"><span>R$</span> 25,00</p>
+      </div>
+    </div>
+
+    <a href="https://wa.me/5527992832260?text=Oi!%20Quero%20desbloquear%20cartas%20do%20Dia%20dos%20Namorados%20🤍" class="venda-cta" target="_blank">Quero desbloquear</a>
+    <p class="venda-nota">Pagamento via Pix · Link entregue pelo WhatsApp · Cartas não expiram</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="nome">Te Vi</span>
+  <p>Menos que um café. Mais duradouro que qualquer um.</p>
+  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
+  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
+</footer>
+
+</body>
+</html>
