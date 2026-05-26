@@ -112,6 +112,146 @@
 
   @media (max-width: 480px) { .cartas-grid { grid-template-columns: 1fr; } }
 
+  /* BOTÃO POR TEMA */
+  .tema-desbloquear {
+    margin-top: 16px;
+    text-align: right;
+  }
+  .btn-desbloquear {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra);
+    text-decoration: none;
+    border: 1px solid rgba(196,168,130,0.35);
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+  }
+  .btn-desbloquear:hover {
+    background: var(--terra);
+    color: white;
+    border-color: var(--terra);
+  }
+  .btn-desbloquear::after { content: '↓'; font-size: 12px; }
+
+  /* BLOCO DE VENDA */
+  .venda-ancora { display: block; position: relative; top: -80px; visibility: hidden; }
+  .venda-bloco {
+    background: linear-gradient(135deg, #1a2e3b 0%, #2c5f7a 100%);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin: 48px 0 64px;
+    color: var(--areia);
+    position: relative;
+    overflow: hidden;
+  }
+  .venda-bloco::before {
+    content: '🔓';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.05;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .venda-subtitulo-bloco {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 8px;
+  }
+  .venda-titulo-bloco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--areia);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .venda-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(244,237,228,0.5);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .planos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .plano {
+    background: rgba(244,237,228,0.07);
+    border: 1px solid rgba(244,237,228,0.12);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .plano:hover { background: rgba(244,237,228,0.12); border-color: rgba(196,168,130,0.4); }
+  .plano-nome {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin-bottom: 6px;
+  }
+  .plano-detalhe {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(244,237,228,0.45);
+    margin-bottom: 12px;
+  }
+  .plano-preco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--areia);
+    line-height: 1;
+  }
+  .plano-preco span { font-size: 14px; color: rgba(244,237,228,0.45); font-weight: 300; }
+  .plano.destaque { background: rgba(196,168,130,0.15); border-color: rgba(196,168,130,0.4); }
+  .plano.destaque .plano-preco { color: var(--terra); }
+  .venda-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--terra);
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .venda-cta:hover { background: #b89468; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,168,130,0.3); }
+  .venda-cta::after { content: '→'; font-size: 14px; }
+  .venda-nota {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    color: rgba(244,237,228,0.3);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
   /* MENU DE NAVEGAÇÃO */
   .nav-bar {
     background: #faf7f3;
@@ -231,6 +371,8 @@
         <div class="carta-preview">"A vontade de te desejar coisas boas não tem prazo. Parabéns, mesmo que tarde!"</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -261,6 +403,8 @@
         <div class="carta-preview">"Isso não precisa ser enfrentado sozinho. Eu estou aqui."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -285,6 +429,8 @@
         <div class="carta-preview">"Bebê a caminho! Que alegria. Estou torcendo por vocês."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -309,6 +455,8 @@
         <div class="carta-preview">"Parar não é desistir. É se respeitar."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -351,6 +499,8 @@
         <div class="carta-preview">"Amanhã é um novo dia e os planos são restabelecidos."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -375,6 +525,8 @@
         <div class="carta-preview">"Valeu cada passo. Parabéns — de verdade."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -399,6 +551,8 @@
         <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -423,6 +577,8 @@
         <div class="carta-preview">"Você não está só nisso. Estou aqui."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -459,6 +615,8 @@
         <div class="carta-preview">"Demorei para responder. Você merecia mais atenção."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -483,6 +641,8 @@
         <div class="carta-preview">"O que você construiu importou. E você vai reconstruir."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -513,6 +673,8 @@
         <div class="carta-preview">"Formou! Dia de festa. Merecia muito."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -549,6 +711,8 @@
         <div class="carta-preview">"Passou! Todo o sacrifício valeu cada segundo."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -573,6 +737,8 @@
         <div class="carta-preview">"Pedir ajuda quando a dor é grande é um ato de coragem enorme."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -603,6 +769,8 @@
         <div class="carta-preview">"Perder um companheiro assim é perder um pedaço do lar, do coração."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -639,6 +807,8 @@
         <div class="carta-preview">"Cada sessão é um passo. Cada dia é uma vitória."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -675,6 +845,8 @@
         <div class="carta-preview">"Oi. Só isso. Oi."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -717,6 +889,8 @@
         <div class="carta-preview">"Perder uma amizade dói de um jeito que pouca gente reconhece."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -747,6 +921,8 @@
         <div class="carta-preview">"Semana pesada passa. Você fica."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -777,6 +953,8 @@
         <div class="carta-preview">"Você não está sozinho. Estou aqui."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -807,6 +985,8 @@
         <div class="carta-preview">"Basta ser você. E basta."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -831,6 +1011,8 @@
         <div class="carta-preview">"Talvez ninguém tenha falado ainda — mas eu vi. Você conseguiu."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
   </div>
 
@@ -867,7 +1049,36 @@
         <div class="carta-preview">"Estou aqui. Conte comigo."</div>
         <div class="carta-btn">Abrir carta</div>
       </div>
+    <div class="tema-desbloquear">
+      <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
+  </div>
+
+  <!-- BLOCO DE VENDA -->
+  <span class="venda-ancora" id="desbloquear"></span>
+  <div class="venda-bloco">
+    <p class="venda-subtitulo-bloco">Pix rapidinho · Link na hora</p>
+    <p class="venda-titulo-bloco">Desbloqueie as cartas que você quer enviar</p>
+    <p class="venda-desc">Escolha qualquer carta do baralho — de qualquer tema. Você paga, eu mando o link direto no seu WhatsApp.</p>
+    <div class="planos">
+      <div class="plano">
+        <p class="plano-nome">Carta avulsa</p>
+        <p class="plano-detalhe">1 carta à sua escolha</p>
+        <p class="plano-preco"><span>R$</span> 3,90</p>
+      </div>
+      <div class="plano destaque">
+        <p class="plano-nome">Kit 3 cartas</p>
+        <p class="plano-detalhe">Qualquer 3 do baralho</p>
+        <p class="plano-preco"><span>R$</span> 7,00</p>
+      </div>
+      <div class="plano">
+        <p class="plano-nome">Baralho</p>
+        <p class="plano-detalhe">10 cartas à sua escolha</p>
+        <p class="plano-preco"><span>R$</span> 25,00</p>
+      </div>
+    </div>
+    <a href="https://wa.me/55SEUNUMERO?text=Oi!%20Quero%20desbloquear%20cartas%20do%20Te%20Vi%20🤍%20Me%20conta%20como%20funciona?" class="venda-cta" target="_blank">Quero desbloquear</a>
+    <p class="venda-nota">Pagamento via Pix · Link entregue pelo WhatsApp · Cartas não expiram · Sem assinatura</p>
   </div>
 
 </div>
