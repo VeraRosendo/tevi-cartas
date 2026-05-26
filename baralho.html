@@ -1437,14 +1437,26 @@
 
 
 
-<!-- BOTÃO FLUTUANTE DO CARRINHO -->
+    <div class="carrinho-lista-itens" id="carrinhoItens">
+      <div class="carrinho-vazio" id="carrinhoVazio">Nenhuma carta selecionada ainda.</div>
+    </div>
+    <div class="carrinho-rodape">
+      <div class="carrinho-plano" id="carrinhoplano"></div>
+      <button class="btn-pedir-wpp" onclick="enviarWhatsApp()">Pedir pelo WhatsApp →</button>
+      <button class="btn-limpar-carrinho" onclick="limparCarrinho()">Limpar seleção</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- CARRINHO FLUTUANTE -->
 <button class="btn-abrir-carrinho" id="btnAbrirCarrinho" onclick="abrirCarrinho()">
-  🛒 Meu pedido
-  <span class="badge" id="carrinhobadge">0</span>
+  🛒 Meu pedido <span class="badge" id="carrinhobadge">0</span>
 </button>
 
-<!-- CARRINHO LATERAL -->
-<div class="carrinho-overlay" id="carrinhoOverlay" onclick="fecharCarrinhoClick(event)">
+<div class="carrinho-overlay" id="carrinhoOverlay">
   <div class="carrinho-painel" id="carrinhoPanel">
     <div class="carrinho-topo">
       <span class="carrinho-titulo">Meu pedido</span>
@@ -1462,130 +1474,113 @@
 </div>
 
 <script>
-const MEU_NUMERO = '5527992832260';
-let carrinho = [];
+var MEU_NUMERO = '5527992832260';
+var carrinho = [];
 
 function getTema(btn) {
-  const temaEl = btn.closest('[data-tema]');
-  return temaEl ? temaEl.getAttribute('data-tema') : 'Baralho';
+  var el = btn.parentElement;
+  while (el) {
+    if (el.getAttribute && el.getAttribute('data-tema')) {
+      return el.getAttribute('data-tema');
+    }
+    el = el.parentElement;
+  }
+  return 'Baralho';
 }
 
 function adicionarAoCarrinho(btn) {
-  const tema = getTema(btn);
-  const subtipo = btn.getAttribute('data-subtipo');
-  const id = tema + '::' + subtipo;
-
-  if (btn.classList.contains('selecionado')) {
-    carrinho = carrinho.filter(c => c.id !== id);
+  var tema = getTema(btn);
+  var subtipo = btn.getAttribute('data-subtipo');
+  var id = tema + '::' + subtipo;
+  var idx = -1;
+  for (var i = 0; i < carrinho.length; i++) {
+    if (carrinho[i].id === id) { idx = i; break; }
+  }
+  if (idx >= 0) {
+    carrinho.splice(idx, 1);
     btn.classList.remove('selecionado');
     btn.textContent = 'Quero esta carta';
   } else {
-    carrinho.push({ id, tema, subtipo });
+    carrinho.push({ id: id, tema: tema, subtipo: subtipo });
     btn.classList.add('selecionado');
-    btn.textContent = '✓ Adicionado';
+    btn.textContent = 'Adicionado';
+  }
+  atualizarUI();
+}
+
+function removerItem(id) {
+  carrinho = carrinho.filter(function(c) { return c.id !== id; });
+  var btns = document.querySelectorAll('.btn-quero.selecionado');
+  for (var i = 0; i < btns.length; i++) {
+    var b = btns[i];
+    var t = getTema(b);
+    var s = b.getAttribute('data-subtipo');
+    if ((t + '::' + s) === id) {
+      b.classList.remove('selecionado');
+      b.textContent = 'Quero esta carta';
+    }
   }
   atualizarUI();
 }
 
 function atualizarUI() {
-  const badge = document.getElementById('carrinhobadge');
-  const btnFloat = document.getElementById('btnAbrirCarrinho');
-  const badgeEl = document.getElementById('carrinhobadge');
-
-  // Badge
-  document.getElementById('carrinhobadge') && (document.getElementById('carrinhobadge').textContent = carrinho.length);
-  document.querySelectorAll('#carrinhobadge, .badge').forEach(el => el.textContent = carrinho.length);
-
-  // Botão flutuante
+  var badge = document.getElementById('carrinhobadge');
+  var btnFloat = document.getElementById('btnAbrirCarrinho');
+  if (badge) badge.textContent = carrinho.length;
   if (carrinho.length > 0) {
     btnFloat.classList.add('visivel');
   } else {
     btnFloat.classList.remove('visivel');
   }
-
-  // Lista
-  const lista = document.getElementById('carrinhoItens');
-  const vazio = document.getElementById('carrinhoVazio');
-
+  var lista = document.getElementById('carrinhoItens');
+  var vazio = document.getElementById('carrinhoVazio');
+  if (!lista) return;
+  var itens = lista.querySelectorAll('.carrinho-item');
+  for (var i = 0; i < itens.length; i++) itens[i].remove();
   if (carrinho.length === 0) {
     vazio.style.display = 'block';
   } else {
     vazio.style.display = 'none';
-  }
-
-  // Remover itens antigos
-  lista.querySelectorAll('.carrinho-item').forEach(el => el.remove());
-
-  carrinho.forEach(carta => {
-    const item = document.createElement('div');
-    item.className = 'carrinho-item';
-    item.innerHTML =
-      '<div class="carrinho-item-info">' +
-        '<div class="carrinho-item-tema">' + carta.tema + '</div>' +
-        '<div class="carrinho-item-nome">' + carta.subtipo + '</div>' +
-      '</div>' +
-      '<button class="carrinho-item-remover" onclick="removerItem('' + carta.id.replace(/'/g, "\'") + '', this)">×</button>';
-    lista.appendChild(item);
-  });
-
-  // Plano sugerido
-  const n = carrinho.length;
-  let planoTxt = '';
-  if (n === 1) planoTxt = 'Carta avulsa · <strong>R$ 3,90</strong>';
-  else if (n <= 3) planoTxt = 'Kit 3 cartas · <strong>R$ 7,00</strong>';
-  else planoTxt = 'Baralho 10 cartas · <strong>R$ 25,00</strong>';
-  if (n > 0) document.getElementById('carrinhoplano').innerHTML = planoTxt;
-}
-
-function removerItem(id, btn) {
-  carrinho = carrinho.filter(c => c.id !== id);
-  // Desmarcar botão correspondente
-  document.querySelectorAll('.btn-quero.selecionado').forEach(b => {
-    const tema = getTema(b);
-    const subtipo = b.getAttribute('data-subtipo');
-    if ((tema + '::' + subtipo) === id) {
-      b.classList.remove('selecionado');
-      b.textContent = 'Quero esta carta';
+    for (var j = 0; j < carrinho.length; j++) {
+      var carta = carrinho[j];
+      var div = document.createElement('div');
+      div.className = 'carrinho-item';
+      var info = document.createElement('div');
+      info.className = 'carrinho-item-info';
+      var tema_el = document.createElement('div');
+      tema_el.className = 'carrinho-item-tema';
+      tema_el.textContent = carta.tema;
+      var nome_el = document.createElement('div');
+      nome_el.className = 'carrinho-item-nome';
+      nome_el.textContent = carta.subtipo;
+      info.appendChild(tema_el);
+      info.appendChild(nome_el);
+      var rem = document.createElement('button');
+      rem.className = 'carrinho-item-remover';
+      rem.textContent = 'x';
+      rem.setAttribute('data-id', carta.id);
+      rem.onclick = function() { removerItem(this.getAttribute('data-id')); };
+      div.appendChild(info);
+      div.appendChild(rem);
+      lista.appendChild(div);
     }
-  });
-  atualizarUI();
+  }
+  var plano = document.getElementById('carrinhoplano');
+  var n = carrinho.length;
+  if (n === 1) plano.innerHTML = 'Carta avulsa <strong>R$ 3,90</strong>';
+  else if (n <= 3) plano.innerHTML = 'Kit 3 cartas <strong>R$ 7,00</strong>';
+  else plano.innerHTML = 'Baralho 10 cartas <strong>R$ 25,00</strong>';
 }
 
 function limparCarrinho() {
   carrinho = [];
-  document.querySelectorAll('.btn-quero.selecionado').forEach(btn => {
-    btn.classList.remove('selecionado');
-    btn.textContent = 'Quero esta carta';
-  });
+  var btns = document.querySelectorAll('.btn-quero.selecionado');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('selecionado');
+    btns[i].textContent = 'Quero esta carta';
+  }
   atualizarUI();
 }
 
 function abrirCarrinho() {
-  document.getElementById('carrinhoOverlay').classList.add('aberto');
-}
-
-function fecharCarrinho() {
-  document.getElementById('carrinhoOverlay').classList.remove('aberto');
-}
-
-function fecharCarrinhoClick(e) {
-  if (e.target === document.getElementById('carrinhoOverlay')) fecharCarrinho();
-}
-
-function enviarWhatsApp() {
-  if (carrinho.length === 0) return;
-  const n = carrinho.length;
-  const linhas = carrinho.map(c => '— ' + c.tema + ' · ' + c.subtipo).join('
-');
-  let plano = n === 1 ? 'carta avulsa (R$ 3,90)' : n <= 3 ? 'kit 3 cartas (R$ 7,00)' : 'baralho 10 cartas (R$ 25,00)';
-  const msg = 'Oi! Quero desbloquear estas cartas do Te Vi 🤍
-
-' + linhas + '
-
-Acho que o ' + plano + ' faz sentido. Como fazer?';
-  window.open('https://wa.me/' + MEU_NUMERO + '?text=' + encodeURIComponent(msg), '_blank');
-}
-</script>
-
-</body>
-</html>
+  document.getElementById('carrinhoOverlay').classList.add('aberto
