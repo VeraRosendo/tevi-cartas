@@ -1488,13 +1488,13 @@ function adicionarAoCarrinho(btn) {
 }
 
 function atualizarUI() {
-  const badge = document.getElementById('carrinhobage');
+  const badge = document.getElementById('carrinhobadge');
   const btnFloat = document.getElementById('btnAbrirCarrinho');
-  const badgeEl = document.getElementById('carrinhobage');
+  const badgeEl = document.getElementById('carrinhobadge');
 
   // Badge
-  document.getElementById('carrinhobage') && (document.getElementById('carrinhobage').textContent = carrinho.length);
-  document.querySelectorAll('#carrinhobage, .badge').forEach(el => el.textContent = carrinho.length);
+  document.getElementById('carrinhobadge') && (document.getElementById('carrinhobadge').textContent = carrinho.length);
+  document.querySelectorAll('#carrinhobadge, .badge').forEach(el => el.textContent = carrinho.length);
 
   // Botão flutuante
   if (carrinho.length > 0) {
