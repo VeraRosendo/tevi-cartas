@@ -608,6 +608,12 @@
     color: #e8c4c4;
     font-style: normal;
     font-weight: 400;
+    animation: brilhar 2.5s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes brilhar {
+    0%, 100% { color: #e8c4c4; text-shadow: none; }
+    50% { color: #faf7f3; text-shadow: 0 0 12px rgba(232,196,196,0.9), 0 0 24px rgba(232,196,196,0.5); }
   }
   .banner-data-pill {
     font-family: 'Jost', sans-serif;
@@ -931,18 +937,15 @@
     </div>
     <div class="cartas-grid">
       <a href="envelope-namorados-celebracao.html" class="carta-item">
-        <div class="carta-subtipo">Para quem está sozinho</div>
-        <div class="carta-preview">"Hoje vim celebrar com você. Porque esse dia é seu também — inteiro, sem desconto."</div>
+        <div class="carta-subtipo">Para quem esta sozinho</div>
+        <div class="carta-preview">"Hoje vim celebrar com voce. Porque esse dia e seu tambem — inteiro, sem desconto."</div>
         <div class="carta-btn">Abrir carta</div>
       </a>
-      <div class="carta-item">
-        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-    </div>
+      <a href="envelope-namorados-1.html" class="carta-item">
         <div class="carta-subtipo">Para namorados</div>
-        <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
+        <div class="carta-preview">"Partilhar momentos com voce deixa a vida mais leve, mais bonita."</div>
         <div class="carta-btn">Abrir carta</div>
-        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Para namorados">Quero esta carta</button>
-  
+      </a>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
         <div class="carta-subtipo">Amor maduro</div>
@@ -970,6 +973,13 @@
         <div class="carta-preview">"Hoje e dia de dizer: voce e uma das pessoas mais importantes da minha vida."</div>
         <div class="carta-btn">Abrir carta</div>
         <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Amigo especial">Quero esta carta</button>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Curta</div>
+        <div class="carta-preview">"Hoje e sempre. Voce sabe."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Curta">Quero esta carta</button>
       </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
@@ -1587,25 +1597,3 @@
 
 
 
-
-    <div class="carrinho-lista-itens" id="carrinhoItens">
-      <div class="carrinho-vazio" id="carrinhoVazio">Nenhuma carta selecionada ainda.</div>
-    </div>
-    <div class="carrinho-rodape">
-      <div class="carrinho-plano" id="carrinhoplano"></div>
-      <button class="btn-pedir-wpp" onclick="enviarWhatsApp()">Pedir pelo WhatsApp →</button>
-      <button class="btn-limpar-carrinho" onclick="limparCarrinho()">Limpar seleção</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-</body>
-</html>
