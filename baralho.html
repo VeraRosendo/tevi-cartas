@@ -561,6 +561,80 @@
   .btn-quero:hover { background: #C4A882; color: #fff; border-color: #C4A882; }
   .btn-quero.selecionado { background: rgba(44,95,122,0.08); color: #2C5F7A; border-color: rgba(44,95,122,0.3); }
 
+
+  /* BANNER DATA ESPECIAL */
+  .banner-data {
+    background: linear-gradient(135deg, #1a2e3b 0%, #2c5f7a 60%, #4a3040 100%);
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    animation: abrirBanner 0.8s ease 0.5s forwards;
+  }
+  @keyframes abrirBanner {
+    from { max-height: 0; opacity: 0; }
+    to { max-height: 120px; opacity: 1; }
+  }
+  .banner-interno {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .banner-texto {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .banner-icone {
+    font-size: 28px;
+    animation: pulsar 2s ease-in-out infinite;
+  }
+  @keyframes pulsar {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.85; }
+  }
+  .banner-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 2.5vw, 20px);
+    font-style: italic;
+    color: #faf7f3;
+    line-height: 1.3;
+  }
+  .banner-titulo strong {
+    color: #e8c4c4;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .banner-data-pill {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.5);
+    margin-top: 3px;
+  }
+  .banner-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #faf7f3;
+    background: rgba(244,237,228,0.1);
+    border: 1px solid rgba(244,237,228,0.25);
+    border-radius: 3px;
+    padding: 9px 18px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .banner-btn:hover { background: rgba(244,237,228,0.2); border-color: rgba(244,237,228,0.5); }
+
 </style>
 </head>
 <body>
@@ -574,10 +648,25 @@
   <a href="index.html" class="header-volta">← voltar ao início</a>
 </header>
 
+
+<!-- BANNER DATA ESPECIAL — editar titulo, icone e data conforme a ocasiao -->
+<div class="banner-data">
+  <div class="banner-interno">
+    <div class="banner-texto">
+      <div class="banner-icone">🤍</div>
+      <div>
+        <div class="banner-titulo">Temos cartas especiais para o <strong>Dia dos Namorados</strong></div>
+        <div class="banner-data-pill">12 de junho · Escolha, copie o link e envie</div>
+      </div>
+    </div>
+    <a href="#namorados" class="banner-btn">Ver cartas</a>
+  </div>
+</div>
+
 <!-- MENU DE NAVEGAÇÃO -->
 <nav class="nav-bar">
   <div class="nav-inner">
-    <a href="namorados.html" class="nav-link destaque">🤍 Dia dos Namorados</a>
+    <a href="#namorados" class="nav-link destaque">🤍 Dia dos Namorados</a>
     <div class="nav-separador"></div>
     <a href="#aniversario" class="nav-link">✨ Aniversário</a>
     <a href="#ansiedade" class="nav-link">🫂 Ansiedade</a>
@@ -853,7 +942,43 @@
         <div class="carta-preview">"Partilhar momentos com você deixa a vida mais leve, mais bonita."</div>
         <div class="carta-btn">Abrir carta</div>
         <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Para namorados">Quero esta carta</button>
+  
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Amor maduro</div>
+        <div class="carta-preview">"Com voce aprendi que amor tambem e silencio confortavel e presenca sem precisar de motivo."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Amor maduro">Quero esta carta</button>
       </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Inicio de relacionamento</div>
+        <div class="carta-preview">"Ainda estou descobrindo voce — e cada descoberta me faz querer saber mais."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Inicio de relacionamento">Quero esta carta</button>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Distancia</div>
+        <div class="carta-preview">"A distancia nao mudou nada do que sinto. So fez eu ter mais certeza."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Distancia">Quero esta carta</button>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Amigo especial</div>
+        <div class="carta-preview">"Hoje e dia de dizer: voce e uma das pessoas mais importantes da minha vida."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Amigo especial">Quero esta carta</button>
+      </div>
+      <div class="carta-item">
+        <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <div class="carta-subtipo">Para quem nao esta mais aqui</div>
+        <div class="carta-preview">"Esse dia me faz sentir sua falta de um jeito que nao tem palavras. Mas voce esta aqui."</div>
+        <div class="carta-btn">Abrir carta</div>
+        <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Para quem nao esta mais aqui">Quero esta carta</button>
+      </div>
+    </div>
     <div class="tema-desbloquear">
       <a href="#desbloquear" class="btn-desbloquear">Desbloquear cartas com cadeado</a>
     </div>
@@ -1438,4 +1563,49 @@
       <div class="plano destaque">
         <p class="plano-nome">Kit 3 cartas</p>
         <p class="plano-detalhe">Qualquer 3 do baralho</p>
-        <p class="plano-preco">
+        <p class="plano-preco"><span>R$</span> 7,00</p>
+      </div>
+      <div class="plano">
+        <p class="plano-nome">Baralho</p>
+        <p class="plano-detalhe">10 cartas à sua escolha</p>
+        <p class="plano-preco"><span>R$</span> 25,00</p>
+      </div>
+    </div>
+    <a href="https://wa.me/5527992832260?text=Oi!%20Quero%20desbloquear%20cartas%20do%20Te%20Vi%20🤍%20Me%20conta%20como%20funciona?" class="venda-cta" target="_blank">Quero desbloquear</a>
+    <p class="venda-nota">Pagamento via Pix · Link entregue pelo WhatsApp · Cartas não expiram · Sem assinatura</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="nome">Te Vi</span>
+  <p>Menos que um café. Mais duradouro que qualquer um.</p>
+  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
+  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
+</footer>
+
+
+
+
+
+    <div class="carrinho-lista-itens" id="carrinhoItens">
+      <div class="carrinho-vazio" id="carrinhoVazio">Nenhuma carta selecionada ainda.</div>
+    </div>
+    <div class="carrinho-rodape">
+      <div class="carrinho-plano" id="carrinhoplano"></div>
+      <button class="btn-pedir-wpp" onclick="enviarWhatsApp()">Pedir pelo WhatsApp →</button>
+      <button class="btn-limpar-carrinho" onclick="limparCarrinho()">Limpar seleção</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
