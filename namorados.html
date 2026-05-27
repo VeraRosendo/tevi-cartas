@@ -252,6 +252,134 @@
     .venda-bloco { padding: 32px 24px; }
     .planos { grid-template-columns: 1fr 1fr; }
   }
+
+  /* CARRINHO COMPARTILHADO */
+  #carrinho-bar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: #1a2e3b;
+    border-bottom: 2px solid #C4A882;
+  }
+  #carrinho-bar.visivel { display: block; }
+  #carrinho-resumo {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  #carrinho-info {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #faf7f3;
+  }
+  #carrinho-info strong { color: #C4A882; font-style: normal; }
+  #carrinho-acoes { display: flex; gap: 10px; align-items: center; }
+  #btn-ver-lista {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.6);
+    background: none;
+    border: 1px solid rgba(244,237,228,0.2);
+    border-radius: 3px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #btn-ver-lista:hover { color: #faf7f3; border-color: rgba(244,237,228,0.5); }
+  #btn-enviar-wpp {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    background: #C4A882;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #btn-enviar-wpp:hover { background: #b89468; }
+  #carrinho-painel {
+    display: none;
+    background: #f4ede4;
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+  }
+  #carrinho-painel.aberto { display: block; }
+  #c-lista {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 24px;
+  }
+  .c-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+  }
+  .c-item:last-child { border-bottom: none; }
+  .c-item-tema {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C4A882;
+    margin-bottom: 2px;
+  }
+  .c-item-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #1a2e3b;
+  }
+  .c-item-rem {
+    background: none;
+    border: none;
+    color: rgba(160,144,128,0.5);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .c-item-rem:hover { color: #c47a7a; }
+  #carrinho-plano-txt {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #5a4d42;
+    padding-bottom: 4px;
+  }
+  #carrinho-plano-txt strong { color: #1a2e3b; font-style: normal; font-size: 17px; }
+  .btn-quero {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 9px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C4A882;
+    background: transparent;
+    border: 1px solid rgba(196,168,130,0.45);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-quero:hover { background: #C4A882; color: #fff; border-color: #C4A882; }
+  .btn-quero.selecionado { background: rgba(44,95,122,0.08); color: #2C5F7A; border-color: rgba(44,95,122,0.3); }
+
 </style>
 </head>
 <body>
@@ -270,7 +398,24 @@
   <strong>12 de junho</strong> · Escolha uma carta. Copie o link e envie.
 </div>
 
-<div class="conteudo">
+
+<div id="carrinho-bar">
+  <div id="carrinho-resumo">
+    <div id="carrinho-info">
+      <strong id="c-num">0</strong> carta<span id="c-plural">s</span> no pedido
+    </div>
+    <div id="carrinho-acoes">
+      <button id="btn-ver-lista" onclick="toggleLista()">Ver lista</button>
+      <button id="btn-enviar-wpp" onclick="enviarWpp()">Pedir no WhatsApp</button>
+    </div>
+  </div>
+  <div id="carrinho-painel">
+    <div id="c-lista"></div>
+  </div>
+</div>
+<script src="carrinho-shared.js"></script>
+
+<div class="conteudo" data-tema="Dia dos Namorados">
 
   <!-- CARTAS GRATUITAS -->
   <p class="secao-titulo">Cartas gratuitas</p>
@@ -301,36 +446,42 @@
       <div class="carta-subtipo">Amor maduro</div>
       <div class="carta-preview">"Com você aprendi que amor também é silêncio confortável e presença sem precisar de motivo."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Amor maduro">Quero esta carta</button>
     </div>
     <div class="carta-item">
       <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
       <div class="carta-subtipo">Início de relacionamento</div>
       <div class="carta-preview">"Ainda estou descobrindo você — e cada descoberta me faz querer saber mais."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Início de relacionamento">Quero esta carta</button>
     </div>
     <div class="carta-item">
       <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-02-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
       <div class="carta-subtipo">Distância</div>
       <div class="carta-preview">"A distância não mudou nada do que sinto. Só fez eu ter mais certeza."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Distância">Quero esta carta</button>
     </div>
     <div class="carta-item">
       <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
       <div class="carta-subtipo">Amigo especial</div>
       <div class="carta-preview">"Hoje é dia de dizer: você é uma das pessoas mais importantes da minha vida."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Amigo especial">Quero esta carta</button>
     </div>
     <div class="carta-item">
       <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
       <div class="carta-subtipo">Curta</div>
       <div class="carta-preview">"Hoje e sempre. Você sabe."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Curta">Quero esta carta</button>
     </div>
     <div class="carta-item">
       <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
       <div class="carta-subtipo">Para quem não está mais aqui</div>
       <div class="carta-preview">"Esse dia me faz sentir sua falta de um jeito que não tem palavras. Mas você está aqui."</div>
       <div class="carta-btn">Abrir carta</div>
+      <button class="btn-quero" onclick="adicionarAoCarrinho(this)" data-subtipo="Para quem não está mais aqui">Quero esta carta</button>
     </div>
   </div>
 
