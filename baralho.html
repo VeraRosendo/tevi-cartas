@@ -365,26 +365,7 @@
   
 
 
-  /* ── BOTÃO QUERO ESTA CARTA ── */
-  .btn-quero {
-    display: block;
-    width: 100%;
-    margin-top: 14px;
-    padding: 9px 0;
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terra);
-    background: transparent;
-    border: 1px solid rgba(196,168,130,0.45);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .btn-quero:hover { background: var(--terra); color: #fff; border-color: var(--terra); }
-  .btn-quero.selecionado { background: rgba(44,95,122,0.08); color: var(--azul); border-color: rgba(44,95,122,0.3); }
+  
 
   
   .btn-abrir-carrinho .badge {
@@ -398,64 +379,7 @@
   }
 
 
-  /* CARRINHO */
-  #carrinho-bar {
-    display: none;
-    position: sticky;
-    top: 52px;
-    z-index: 200;
-    background: #1a2e3b;
-    border-bottom: 2px solid #C4A882;
-    padding: 0;
-  }
-  #carrinho-bar.visivel { display: block; }
-  #carrinho-resumo {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  #carrinho-info {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-style: italic;
-    color: #faf7f3;
-  }
-  #carrinho-info strong { color: #C4A882; font-style: normal; }
-  #carrinho-acoes { display: flex; gap: 10px; align-items: center; }
-  #btn-ver-lista {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(244,237,228,0.6);
-    background: none;
-    border: 1px solid rgba(244,237,228,0.2);
-    border-radius: 3px;
-    padding: 7px 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  #btn-ver-lista:hover { color: #faf7f3; border-color: rgba(244,237,228,0.5); }
-  #btn-enviar-wpp {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: white;
-    background: #C4A882;
-    border: none;
-    border-radius: 3px;
-    padding: 8px 18px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  #btn-enviar-wpp:hover { background: #b89468; }
-
+  
   /* PAINEL DA LISTA */
   #carrinho-painel {
     display: none;
@@ -509,6 +433,134 @@
   }
   #carrinho-plano-txt strong { color: #1a2e3b; font-style: normal; font-size: 17px; }
 
+
+  /* CARRINHO COMPARTILHADO */
+  #carrinho-bar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: #1a2e3b;
+    border-bottom: 2px solid #C4A882;
+  }
+  #carrinho-bar.visivel { display: block; }
+  #carrinho-resumo {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  #carrinho-info {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #faf7f3;
+  }
+  #carrinho-info strong { color: #C4A882; font-style: normal; }
+  #carrinho-acoes { display: flex; gap: 10px; align-items: center; }
+  #btn-ver-lista {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.6);
+    background: none;
+    border: 1px solid rgba(244,237,228,0.2);
+    border-radius: 3px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #btn-ver-lista:hover { color: #faf7f3; border-color: rgba(244,237,228,0.5); }
+  #btn-enviar-wpp {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    background: #C4A882;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #btn-enviar-wpp:hover { background: #b89468; }
+  #carrinho-painel {
+    display: none;
+    background: #f4ede4;
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+  }
+  #carrinho-painel.aberto { display: block; }
+  #c-lista {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 24px;
+  }
+  .c-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+  }
+  .c-item:last-child { border-bottom: none; }
+  .c-item-tema {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C4A882;
+    margin-bottom: 2px;
+  }
+  .c-item-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #1a2e3b;
+  }
+  .c-item-rem {
+    background: none;
+    border: none;
+    color: rgba(160,144,128,0.5);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .c-item-rem:hover { color: #c47a7a; }
+  #carrinho-plano-txt {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #5a4d42;
+    padding-bottom: 4px;
+  }
+  #carrinho-plano-txt strong { color: #1a2e3b; font-style: normal; font-size: 17px; }
+  .btn-quero {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 9px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C4A882;
+    background: transparent;
+    border: 1px solid rgba(196,168,130,0.45);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-quero:hover { background: #C4A882; color: #fff; border-color: #C4A882; }
+  .btn-quero.selecionado { background: rgba(44,95,122,0.08); color: #2C5F7A; border-color: rgba(44,95,122,0.3); }
+
 </style>
 </head>
 <body>
@@ -552,21 +604,22 @@
 </nav>
 
 
-<!-- CARRINHO STICKY -->
+
 <div id="carrinho-bar">
   <div id="carrinho-resumo">
     <div id="carrinho-info">
       <strong id="c-num">0</strong> carta<span id="c-plural">s</span> no pedido
     </div>
     <div id="carrinho-acoes">
-      <button id="btn-ver-lista" onclick="toggleLista()">Ver lista ▾</button>
-      <button id="btn-enviar-wpp" onclick="enviarWpp()">Pedir no WhatsApp →</button>
+      <button id="btn-ver-lista" onclick="toggleLista()">Ver lista</button>
+      <button id="btn-enviar-wpp" onclick="enviarWpp()">Pedir no WhatsApp</button>
     </div>
   </div>
   <div id="carrinho-painel">
-    <div id="carrinho-painel-interno" id="c-lista"></div>
+    <div id="c-lista"></div>
   </div>
 </div>
+<script src="carrinho-shared.js"></script>
 
 <div class="temas">
 
@@ -1385,164 +1438,4 @@
       <div class="plano destaque">
         <p class="plano-nome">Kit 3 cartas</p>
         <p class="plano-detalhe">Qualquer 3 do baralho</p>
-        <p class="plano-preco"><span>R$</span> 7,00</p>
-      </div>
-      <div class="plano">
-        <p class="plano-nome">Baralho</p>
-        <p class="plano-detalhe">10 cartas à sua escolha</p>
-        <p class="plano-preco"><span>R$</span> 25,00</p>
-      </div>
-    </div>
-    <a href="https://wa.me/5527992832260?text=Oi!%20Quero%20desbloquear%20cartas%20do%20Te%20Vi%20🤍%20Me%20conta%20como%20funciona?" class="venda-cta" target="_blank">Quero desbloquear</a>
-    <p class="venda-nota">Pagamento via Pix · Link entregue pelo WhatsApp · Cartas não expiram · Sem assinatura</p>
-  </div>
-
-</div>
-
-<footer>
-  <span class="nome">Te Vi</span>
-  <p>Menos que um café. Mais duradouro que qualquer um.</p>
-  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
-  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
-</footer>
-
-
-
-
-
-    <div class="carrinho-lista-itens" id="carrinhoItens">
-      <div class="carrinho-vazio" id="carrinhoVazio">Nenhuma carta selecionada ainda.</div>
-    </div>
-    <div class="carrinho-rodape">
-      <div class="carrinho-plano" id="carrinhoplano"></div>
-      <button class="btn-pedir-wpp" onclick="enviarWhatsApp()">Pedir pelo WhatsApp →</button>
-      <button class="btn-limpar-carrinho" onclick="limparCarrinho()">Limpar seleção</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-<script>
-var NUM = '5527992832260';
-var itens = [];
-var listaAberta = false;
-
-function getT(btn) {
-  var el = btn.parentElement;
-  while (el) {
-    if (el.dataset && el.dataset.tema) return el.dataset.tema;
-    el = el.parentElement;
-  }
-  return 'Baralho';
-}
-
-function adicionarAoCarrinho(btn) {
-  var tema = getT(btn);
-  var sub = btn.getAttribute('data-subtipo');
-  var id = tema + '||' + sub;
-  var idx = itens.findIndex(function(x){ return x.id === id; });
-  if (idx >= 0) {
-    itens.splice(idx, 1);
-    btn.classList.remove('selecionado');
-    btn.textContent = 'Quero esta carta';
-  } else {
-    itens.push({ id: id, tema: tema, sub: sub });
-    btn.classList.add('selecionado');
-    btn.textContent = 'Adicionado ao pedido';
-  }
-  atualizar();
-}
-
-function remover(id) {
-  itens = itens.filter(function(x){ return x.id !== id; });
-  document.querySelectorAll('.btn-quero.selecionado').forEach(function(b) {
-    var t = getT(b);
-    var s = b.getAttribute('data-subtipo');
-    if ((t + '||' + s) === id) {
-      b.classList.remove('selecionado');
-      b.textContent = 'Quero esta carta';
-    }
-  });
-  atualizar();
-}
-
-function atualizar() {
-  var bar = document.getElementById('carrinho-bar');
-  var num = document.getElementById('c-num');
-  var plural = document.getElementById('c-plural');
-  var n = itens.length;
-  if (n > 0) {
-    bar.classList.add('visivel');
-    num.textContent = n;
-    plural.textContent = n === 1 ? '' : 's';
-  } else {
-    bar.classList.remove('visivel');
-    listaAberta = false;
-  }
-  renderLista();
-}
-
-function renderLista() {
-  var painel = document.getElementById('carrinho-painel-interno');
-  if (!painel) return;
-  painel.innerHTML = '';
-  itens.forEach(function(item) {
-    var div = document.createElement('div');
-    div.className = 'c-item';
-    var info = document.createElement('div');
-    var tema_el = document.createElement('div');
-    tema_el.className = 'c-item-tema';
-    tema_el.textContent = item.tema;
-    var nome_el = document.createElement('div');
-    nome_el.className = 'c-item-nome';
-    nome_el.textContent = item.sub;
-    info.appendChild(tema_el);
-    info.appendChild(nome_el);
-    var rem = document.createElement('button');
-    rem.className = 'c-item-rem';
-    rem.textContent = 'x';
-    rem.setAttribute('data-id', item.id);
-    rem.onclick = function() { remover(this.getAttribute('data-id')); };
-    div.appendChild(info);
-    div.appendChild(rem);
-    painel.appendChild(div);
-  });
-  var plano = document.createElement('div');
-  plano.id = 'carrinho-plano-txt';
-  var n = itens.length;
-  if (n === 1) plano.innerHTML = 'Sugestao: carta avulsa <strong>R$ 3,90</strong>';
-  else if (n <= 3) plano.innerHTML = 'Sugestao: kit 3 cartas <strong>R$ 7,00</strong>';
-  else plano.innerHTML = 'Sugestao: baralho 10 cartas <strong>R$ 25,00</strong>';
-  painel.appendChild(plano);
-}
-
-function toggleLista() {
-  listaAberta = !listaAberta;
-  var painel = document.getElementById('carrinho-painel');
-  var btn = document.getElementById('btn-ver-lista');
-  if (listaAberta) {
-    painel.classList.add('aberto');
-    btn.textContent = 'Fechar lista x';
-  } else {
-    painel.classList.remove('aberto');
-    btn.textContent = 'Ver lista v';
-  }
-}
-
-function enviarWpp() {
-  if (itens.length === 0) return;
-  var n = itens.length;
-  var linhas = itens.map(function(x){ return '- ' + x.tema + ': ' + x.sub; }).join('\n');
-  var plano = n === 1 ? 'carta avulsa (R$ 3,90)' : n <= 3 ? 'kit 3 cartas (R$ 7,00)' : 'baralho 10 cartas (R$ 25,00)';
-  var msg = 'Oi! Quero desbloquear estas cartas do Te Vi\n\n' + linhas + '\n\nAcho que o ' + plano + ' faz sentido. Como fazer?';
-  window.open('https://wa.me/' + NUM + '?text=' + encodeURIComponent(msg), '_blank');
-}
-</script>
-
-</body>
-</html>
+        <p class="plano-preco">
