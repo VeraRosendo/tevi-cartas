@@ -641,6 +641,30 @@
   }
   .banner-btn:hover { background: rgba(244,237,228,0.2); border-color: rgba(244,237,228,0.5); }
 
+
+  /* BOTÃO PRESENTEAR */
+  .btn-presentear {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: #25D366;
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.2s ease;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-presentear:hover { background: #1da851; }
+  .btn-presentear::before { content: "🤍 "; }
+
 </style>
 </head>
 <body>
@@ -936,16 +960,18 @@
       </div>
     </div>
     <div class="cartas-grid">
-      <a href="envelope-namorados-celebracao.html" class="carta-item">
+      <div class="carta-item" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;background:#faf7f3;border:1px solid rgba(196,168,130,0.2);border-radius:8px;padding:24px 20px;position:relative;">
         <div class="carta-subtipo">Para quem esta sozinho</div>
         <div class="carta-preview">"Hoje vim celebrar com voce. Porque esse dia e seu tambem — inteiro, sem desconto."</div>
-        <div class="carta-btn">Abrir carta</div>
-      </a>
-      <a href="envelope-namorados-1.html" class="carta-item">
+        <a href="envelope-namorados-celebracao.html" class="carta-btn">Abrir carta →</a>
+        <a href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20te%20mandar%20uma%20carta%20especial%20%F0%9F%A4%8D%0A%0Ahttps%3A%2F%2Fshikoba.com.br%2Fenvelope-namorados-celebracao.html" target="_blank" class="btn-presentear">Presentear alguém</a>
+      </div>
+      <div class="carta-item" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;background:#faf7f3;border:1px solid rgba(196,168,130,0.2);border-radius:8px;padding:24px 20px;position:relative;">
         <div class="carta-subtipo">Para namorados</div>
         <div class="carta-preview">"Partilhar momentos com voce deixa a vida mais leve, mais bonita."</div>
-        <div class="carta-btn">Abrir carta</div>
-      </a>
+        <a href="envelope-namorados-1.html" class="carta-btn">Abrir carta →</a>
+        <a href="https://wa.me/?text=Ol%C3%A1%21%20Quero%20te%20mandar%20uma%20carta%20especial%20%F0%9F%A4%8D%0A%0Ahttps%3A%2F%2Fshikoba.com.br%2Fenvelope-namorados-1.html" target="_blank" class="btn-presentear">Presentear alguém</a>
+      </div>
       <div class="carta-item">
         <div class="cadeado"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
         <div class="carta-subtipo">Amor maduro</div>
@@ -1297,9 +1323,14 @@
         <div class="carta-preview">"Você nunca saiu da minha cabeça. Saudade de você — de verdade."</div>
         <div class="carta-btn">Abrir carta</div>
       </a>
-      <a href="envelope-cuidado-1.html" class="carta-item">
-        <div class="carta-subtipo">Presença silenciosa</div>
-        <div class="carta-preview">"Não precisa falar nada. Eu tô aqui."</div>
+      <a href="envelope-sawubona.html" class="carta-item">
+        <div class="carta-subtipo">Sawubona</div>
+        <div class="carta-preview">"Quando você quer falar pouco e dizer muito."</div>
+        <div class="carta-btn">Abrir carta</div>
+      </a>
+      <a href="envelope-shikoba.html" class="carta-item">
+        <div class="carta-subtipo">Shikoba</div>
+        <div class="carta-preview">"Quando você quer responder com todo o coração."</div>
         <div class="carta-btn">Abrir carta</div>
       </a>
       <div class="carta-item">
@@ -1594,4 +1625,33 @@
 
 <footer>
   <span class="nome">Te Vi</span>
-  <p>Menos que um café. Mais duradouro que qual
+  <p>Menos que um café. Mais duradouro que qualquer um.</p>
+  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
+  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
+</footer>
+
+
+
+
+
+    <div class="carrinho-lista-itens" id="carrinhoItens">
+      <div class="carrinho-vazio" id="carrinhoVazio">Nenhuma carta selecionada ainda.</div>
+    </div>
+    <div class="carrinho-rodape">
+      <div class="carrinho-plano" id="carrinhoplano"></div>
+      <button class="btn-pedir-wpp" onclick="enviarWhatsApp()">Pedir pelo WhatsApp →</button>
+      <button class="btn-limpar-carrinho" onclick="limparCarrinho()">Limpar seleção</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
