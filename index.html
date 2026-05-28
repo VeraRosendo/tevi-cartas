@@ -416,6 +416,187 @@
     .intencao-grid { grid-template-columns: 1fr 1fr; }
   }
 
+
+  /* INTENÇÃO NO HERO */
+  .hero-intencao {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 560px;
+    animation: surgir 1s ease 1.6s forwards;
+    opacity: 0;
+  }
+  .hero-intencao-pergunta {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 200;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.4);
+    margin-bottom: 14px;
+  }
+  .hero-intencao-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .hero-int-btn {
+    background: rgba(250,247,243,0.06);
+    border: 1px solid rgba(250,247,243,0.1);
+    border-radius: 6px;
+    padding: 12px 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .hero-int-btn:hover {
+    background: rgba(250,247,243,0.12);
+    border-color: rgba(196,168,130,0.35);
+  }
+  .hint-icone { font-size: 18px; line-height: 1; }
+  .hint-texto {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(244,237,228,0.75);
+    line-height: 1.3;
+  }
+  .hero-intencao-direto {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-intencao-direto:hover { color: var(--terra); }
+  @media (max-width: 400px) {
+    .hero-intencao-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+
+  /* INTENÇÃO NO HERO V2 */
+  .hero-intencao {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 580px;
+    animation: surgir 1s ease 1.0s forwards;
+    opacity: 0;
+  }
+  .hero-intencao-pergunta {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 3vw, 22px);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(244,237,228,0.7);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .hero-intencao-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.45);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .hero-intencao-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .hero-int-btn {
+    background: rgba(250,247,243,0.06);
+    border: 1px solid rgba(250,247,243,0.1);
+    border-radius: 6px;
+    padding: 12px 10px;
+    text-decoration: none;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-int-btn:hover {
+    background: rgba(250,247,243,0.12);
+    border-color: rgba(196,168,130,0.4);
+    transform: translateY(-1px);
+  }
+  .hint-icone { font-size: 16px; line-height: 1; }
+  .hint-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(244,237,228,0.9);
+    line-height: 1.2;
+  }
+  .hint-cats {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 0.08em;
+    color: rgba(196,168,130,0.55);
+    line-height: 1.4;
+  }
+  .hero-intencao-direto {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244,237,228,0.22);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .hero-intencao-direto:hover { color: var(--terra); }
+  .hero-divisor-sub {
+    width: 30px;
+    height: 1px;
+    background: var(--terra);
+    margin: 20px auto;
+    opacity: 0.3;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-sub-bottom {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 200;
+    color: rgba(244,237,228,0.35);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    animation: surgir 1s ease 1.5s forwards;
+    opacity: 0;
+  }
+  .hero-btn-bottom {
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    animation: surgir 1s ease 1.8s forwards;
+    opacity: 0;
+  }
+  @media (max-width: 400px) {
+    .hero-intencao-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
 </style>
 </head>
 <body>
@@ -436,54 +617,53 @@
   </div>
   <h1 class="hero-titulo">Te <span>Vi</span></h1>
   <p class="hero-tagline">Porque às vezes a pessoa só precisa saber que alguém a viu.</p>
-  <div class="hero-divisor"></div>
-  <p class="hero-sub">Sawubona · Shikoba</p>
-  <div class="hero-btn">
+  <div class="hero-intencao">
+    <p class="hero-intencao-pergunta">Como você quer chegar nessa pessoa?</p>
+    <span class="hero-intencao-sub">escolha uma intenção</span>
+    <div class="hero-intencao-grid">
+      <a href="baralho.html#aniversario" class="hero-int-btn">
+        <span class="hint-icone">🤍</span>
+        <span class="hint-texto">Fazer sorrir</span>
+        <span class="hint-cats">Aniversário · Bebê · Formatura</span>
+      </a>
+      <a href="baralho.html#ansiedade" class="hero-int-btn">
+        <span class="hint-icone">🫂</span>
+        <span class="hint-texto">Ser presença</span>
+        <span class="hint-cats">Ansiedade · Burnout · Solidão</span>
+      </a>
+      <a href="baralho.html#luto" class="hero-int-btn">
+        <span class="hint-icone">🕊️</span>
+        <span class="hint-texto">Acolher</span>
+        <span class="hint-cats">Luto · Internação · Falência</span>
+      </a>
+      <a href="baralho.html#reconexao" class="hero-int-btn">
+        <span class="hint-icone">🧵</span>
+        <span class="hint-texto">Reabrir vínculo</span>
+        <span class="hint-cats">Desculpas · Reconexão</span>
+      </a>
+      <a href="baralho.html#invisiveis" class="hero-int-btn">
+        <span class="hint-icone">🌟</span>
+        <span class="hint-texto">Alguém precisa ler isso</span>
+        <span class="hint-cats">Cartas Invisíveis</span>
+      </a>
+      <a href="baralho.html#namorados" class="hero-int-btn">
+        <span class="hint-icone">✨</span>
+        <span class="hint-texto">Dia dos Namorados</span>
+        <span class="hint-cats">12 de junho</span>
+      </a>
+    </div>
+    <a href="baralho.html" class="hero-intencao-direto">ou ver todo o baralho →</a>
+  </div>
+
+  <div class="hero-btn-bottom">
     <a href="baralho.html" class="btn">Escolha uma Carta!</a>
   </div>
+
+  <div class="hero-divisor-sub"></div>
+  <p class="hero-sub-bottom">Sawubona · Shikoba</p>
 </section>
 
 
-<!-- FLUXO DE INTENÇÃO -->
-<div class="intencao-bloco">
-  <div class="intencao-interno">
-    <p class="intencao-pergunta">Como você quer chegar nessa pessoa?</p>
-    <p class="intencao-sub">Escolha uma intenção — a gente encontra a carta certa</p>
-    <div class="intencao-grid">
-      <a href="baralho.html#aniversario" class="intencao-btn">
-        <span class="intencao-btn-icone">🤍</span>
-        <span class="intencao-btn-texto">Fazer sorrir</span>
-        <span class="intencao-btn-cats">Aniversário · Bebê · Formatura</span>
-      </a>
-      <a href="baralho.html#ansiedade" class="intencao-btn">
-        <span class="intencao-btn-icone">🫂</span>
-        <span class="intencao-btn-texto">Ser presença</span>
-        <span class="intencao-btn-cats">Ansiedade · Burnout · Solidão</span>
-      </a>
-      <a href="baralho.html#luto" class="intencao-btn">
-        <span class="intencao-btn-icone">🕊️</span>
-        <span class="intencao-btn-texto">Acolher</span>
-        <span class="intencao-btn-cats">Luto · Internação · Falência</span>
-      </a>
-      <a href="baralho.html#reconexao" class="intencao-btn">
-        <span class="intencao-btn-icone">🧵</span>
-        <span class="intencao-btn-texto">Reabrir vínculo</span>
-        <span class="intencao-btn-cats">Desculpas · Reconexão</span>
-      </a>
-      <a href="baralho.html#invisiveis" class="intencao-btn">
-        <span class="intencao-btn-icone">🌟</span>
-        <span class="intencao-btn-texto">Alguém precisa ler isso</span>
-        <span class="intencao-btn-cats">Cartas Invisíveis</span>
-      </a>
-      <a href="baralho.html#namorados" class="intencao-btn">
-        <span class="intencao-btn-icone">✨</span>
-        <span class="intencao-btn-texto">Dia dos Namorados</span>
-        <span class="intencao-btn-cats">12 de junho</span>
-      </a>
-    </div>
-    <a href="baralho.html" class="intencao-direto">ou ir direto ao baralho →</a>
-  </div>
-</div>
 
 <hr class="separador">
 
@@ -498,101 +678,4 @@
 
 <hr class="separador">
 
-<!-- SAWUBONA E SHIKOBA -->
-<div class="bloco-palavras">
-  <div class="bloco-palavras-interno">
-    <p class="label" style="color:var(--azul)">A origem</p>
-    <div class="palavra-grande">Sawubona.</div>
-    <p class="pronuncia">sa · u · bô · na</p>
-    <p class="definicao">Saudação Zulu milenar: "Eu te vejo.<br>Você existe para mim — completamente."</p>
-    <div class="divisor-palavras"></div>
-    <div class="palavra-grande" style="color:var(--terra)">Shikoba.</div>
-    <p class="pronuncia">xi · kô · ba</p>
-    <p class="definicao">A resposta: "Então eu existo para você.<br>Fui visto. Não estou só."</p>
-    <div style="margin-top:40px; max-width:500px; margin-left:auto; margin-right:auto;">
-      <p style="font-size:16px; line-height:1.9; color:var(--texto-suave)">Quando alguém recebe uma carta do Te Vi, pode responder apenas: <strong style="color:var(--azul)">Shikoba.</strong> Uma palavra que diz tudo.</p>
-    </div>
-  </div>
-</div>
-
-<!-- VERDADES BRASILEIRAS -->
-<div class="bloco-verdades">
-  <div class="bloco-verdades-interno">
-    <p class="label">Por que o Brasil precisa disso</p>
-    <h2>O jeito brasileiro<br>de sentir <em>e de se calar.</em></h2>
-    <br>
-    <div class="verdade">
-      <div class="verdade-titulo">A dificuldade com o silêncio do cuidado</div>
-      <p>O brasileiro se expressa muito — mas quando não sabe o que dizer, some. O sumiço não é falta de amor. É falta de palavra. O Te Vi dá a palavra.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">A vergonha de parecer dramático</div>
-      <p>Mandar uma mensagem longa e emotiva parece exagero. Apenas um like, parece descaso. Uma carta curta, escolhida com cuidado, — é exatamente a medida certa.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">O valor de ser percebido no ordinário</div>
-      <p>Não precisamos de elogios grandiosos. Uma mensagem que diz "percebi que sua semana foi pesada" vale mais que um discurso no aniversário.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">A culpa por não manter contato</div>
-      <p>Muita gente pensa em alguém e não manda mensagem porque passou tempo demais. O Te Vi tem cartas para isso: "sumimos, mas não esqueci de você."</p>
-    </div>
-  </div>
-</div>
-
-<!-- COMO FUNCIONA -->
-<section id="como-funciona">
-  <p class="label">Como funciona</p>
-  <h2>Simples como<br><em>um gesto de cuidado.</em></h2>
-  <br>
-  <div class="passo">
-    <div class="passo-num">1</div>
-    <div>
-      <h3>Escolha a situação</h3>
-      <p>Amigo doente, colega exausto, familiar distante, alguém que sumiu. Temos cartas para o cotidiano real.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">2</div>
-    <div>
-      <h3>Receba o link da carta</h3>
-      <p>Cada carta tem seu próprio link — animada, elegante, com o verso do baralho revelando a mensagem.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">3</div>
-    <div>
-      <h3>Envie pelo WhatsApp.</h3>
-      <p>A pessoa toca no link, vê o envelope, abre — e a mensagem se revela linha por linha.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">4</div>
-    <div>
-      <h3>A resposta pode ser só isso</h3>
-      <p><strong style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--azul)">Shikoba.</strong> — Fui visto. Não estou só.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="separador">
-
-<!-- SHIKOBA FINAL -->
-<div class="bloco-shikoba">
-  <div class="bloco-shikoba-interno">
-    <div class="shikoba-grande">Shikoba.</div>
-    <p class="shikoba-traducao">Então eu existo para você.</p>
-    <p class="shikoba-frase">Porque quando alguém recebe um <strong>Sawubona</strong><br>e responde <strong>Shikoba</strong> —<br>o mundo fica um pouco menos solitário.</p>
-  </div>
-</div>
-
-<!-- RODAPÉ -->
-<footer>
-  <span class="nome">Te Vi</span>
-  <p>Menos que um café. Mais duradouro que qualquer um.</p>
-  <p class="cvv">Se você ou alguém que conhece está passando por um momento difícil,<br>
-  o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.</p>
-</footer>
-
-</body>
-</html>
+<!-- SAWUBONA E SHI
