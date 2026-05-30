@@ -3,36 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Te Vi — Porque às vezes a pessoa só precisa saber que alguém se importa.</title>
+<title>Te Vi — Cartas que chegam quando palavras faltam.</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
     --azul: #2C5F7A;
+    --azul-escuro: #1a2e3b;
     --azul-claro: #7FB3C8;
     --areia: #f4ede4;
+    --areia-pura: #faf7f3;
     --terra: #C4A882;
     --texto: #2A2218;
     --texto-suave: #6b5d4f;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--areia);
-    color: var(--texto);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-  }
+  body { background: var(--areia); color: var(--texto); font-family: 'Jost', sans-serif; font-weight: 300; }
 
-  /* HERO */
+  @keyframes surgir { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes surgirLento { from { opacity:0; } to { opacity:1; } }
+
+  /* ── HERO ─────────────────────────────────────────────────────── */
   .hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, #1a2e3b 0%, #2c5f7a 50%, #4a8fa8 100%);
+    background: linear-gradient(160deg, #1a2e3b 0%, #2c5f7a 55%, #3d7d96 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 24px;
+    padding: 56px 24px 40px;
     position: relative;
     overflow: hidden;
   }
@@ -40,518 +39,113 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(127,179,200,0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 50%, rgba(127,179,200,0.12) 0%, transparent 65%);
   }
-  .hero-logo {
-    margin-bottom: 32px;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease forwards;
-    opacity: 0;
-  }
+  .hero-logo { margin-bottom: 24px; position:relative; z-index:2; animation: surgir 1s ease forwards; opacity:0; }
   .hero-titulo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(64px, 15vw, 120px);
+    font-size: clamp(72px, 16vw, 128px);
     font-weight: 300;
-    color: var(--areia);
+    color: var(--areia-pura);
     letter-spacing: 0.04em;
     line-height: 1;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 0.3s forwards;
-    opacity: 0;
+    position: relative; z-index:2;
+    animation: surgir 1s ease 0.3s forwards; opacity:0;
   }
   .hero-titulo span { color: var(--azul-claro); font-style: italic; }
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(16px, 3vw, 22px);
+    font-size: clamp(16px, 2.8vw, 22px);
     font-style: italic;
-    color: rgba(244,237,228,0.75);
-    margin-top: 20px;
+    color: rgba(244,237,228,0.7);
+    margin-top: 18px;
     letter-spacing: 0.04em;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 0.6s forwards;
-    opacity: 0;
+    position: relative; z-index:2;
+    animation: surgir 1s ease 0.6s forwards; opacity:0;
   }
   .hero-divisor {
-    width: 50px;
-    height: 1px;
-    background: var(--terra);
-    margin: 32px auto;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 0.9s forwards;
-    opacity: 0;
-  }
-  .hero-sub {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-    color: rgba(244,237,228,0.5);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 1.1s forwards;
-    opacity: 0;
-  }
-  .hero-btn {
-    margin-top: 48px;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 1.3s forwards;
-    opacity: 0;
-  }
-  .btn {
-    display: inline-block;
-    padding: 14px 36px;
-    border: 1px solid rgba(196,168,130,0.6);
-    border-radius: 2px;
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--areia);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn:hover {
-    background: rgba(196,168,130,0.15);
-    border-color: var(--terra);
-  }
-  @keyframes surgir {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    width: 40px; height: 1px; background: var(--terra);
+    margin: 24px auto 0; opacity: 0.6;
+    position:relative; z-index:2;
+    animation: surgir 1s ease 0.9s forwards; opacity:0;
   }
 
-  /* SEÇÕES */
-  section {
-    padding: 80px 24px;
-    max-width: 780px;
-    margin: 0 auto;
+  /* ── ZONA DE ESCOLHA — dois caminhos ──────────────────────────── */
+  .zona-escolha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+    animation: surgirLento 1s ease 1.2s forwards; opacity:0;
+    position: relative; z-index:2;
   }
 
-  .label {
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--terra);
-    margin-bottom: 32px;
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 6vw, 52px);
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 28px;
-    color: var(--azul);
-  }
-  h2 em { font-style: italic; color: var(--terra); }
-
-  p {
-    font-size: clamp(15px, 2vw, 17px);
-    line-height: 1.9;
-    color: var(--texto-suave);
-    margin-bottom: 20px;
-  }
-
-  .destaque {
-    border-left: 2px solid var(--terra);
-    padding-left: 24px;
-    margin: 36px 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3vw, 28px);
-    font-style: italic;
-    color: var(--azul);
-    line-height: 1.5;
-  }
-
-  .separador {
-    border: none;
-    border-top: 1px solid rgba(196,168,130,0.25);
-    margin: 0;
-  }
-
-  /* PALAVRAS */
-  .bloco-palavras {
-    background: #ede4d8;
-    padding: 80px 24px;
-    text-align: center;
-  }
-  .bloco-palavras-interno {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-  .palavra-grande {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(44px, 9vw, 80px);
-    font-weight: 300;
-    color: var(--azul);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .pronuncia {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--terra);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .definicao {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(16px, 2.5vw, 22px);
-    font-style: italic;
-    color: var(--texto-suave);
-    line-height: 1.6;
-    margin-bottom: 0;
-  }
-  .divisor-palavras {
-    width: 1px;
-    height: 48px;
-    background: var(--terra);
-    opacity: 0.4;
-    margin: 28px auto;
-  }
-
-  /* VERDADES */
-  .bloco-verdades {
-    background: var(--azul);
-    padding: 80px 24px;
-  }
-  .bloco-verdades-interno {
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .bloco-verdades .label { color: var(--terra); }
-  .bloco-verdades h2 { color: var(--areia); }
-  .bloco-verdades h2 em { color: var(--azul-claro); }
-  .verdade {
-    margin-bottom: 36px;
-    padding-bottom: 36px;
-    border-bottom: 1px solid rgba(127,179,200,0.15);
-  }
-  .verdade:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .verdade-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 3vw, 24px);
-    font-weight: 600;
-    color: var(--areia);
-    margin-bottom: 10px;
-  }
-  .verdade p { color: rgba(244,237,228,0.65); margin-bottom: 0; }
-
-  /* COMO FUNCIONA */
-  .passo {
+  /* Bloco esquerdo — intenção */
+  .bloco-intencao {
+    background: var(--azul-escuro);
+    padding: 36px 28px 32px;
     display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    margin-bottom: 36px;
-    padding-bottom: 36px;
-    border-bottom: 1px solid rgba(196,168,130,0.2);
+    flex-direction: column;
+    gap: 0;
+    border-right: 1px solid rgba(196,168,130,0.15);
   }
-  .passo:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .passo-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
+  .bloco-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
     font-weight: 300;
-    color: var(--terra);
-    opacity: 0.5;
-    line-height: 1;
-    min-width: 48px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.55);
+    margin-bottom: 10px;
   }
-  .passo h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--azul);
-    margin-bottom: 8px;
-  }
-  .passo p { margin-bottom: 0; font-size: 15px; }
-
-  /* SHIKOBA */
-  .bloco-shikoba {
-    background: #1a2e3b;
-    padding: 80px 24px;
-    text-align: center;
-  }
-  .bloco-shikoba-interno {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .shikoba-grande {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 10vw, 88px);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--areia);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .shikoba-traducao {
+  .bloco-titulo {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(16px, 2.5vw, 22px);
     font-style: italic;
-    color: rgba(244,237,228,0.5);
-    margin-bottom: 40px;
-  }
-  .shikoba-frase {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 3vw, 26px);
-    font-style: italic;
-    color: rgba(244,237,228,0.8);
-    line-height: 1.6;
-  }
-  .shikoba-frase strong { color: var(--azul-claro); font-style: normal; }
-
-  /* RODAPÉ */
-  footer {
-    background: #111d24;
-    color: rgba(244,237,228,0.35);
-    text-align: center;
-    padding: 48px 24px;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-  }
-  footer .nome {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
     font-weight: 300;
-    color: var(--areia);
-    display: block;
-    margin-bottom: 10px;
-  }
-  footer a { color: var(--azul-claro); text-decoration: none; }
-  footer .cvv { margin-top: 20px; font-size: 11px; color: rgba(244,237,228,0.25); }
-
-  /* FLUXO DE INTENÇÃO */
-  .intencao-bloco {
-    background: #1a2e3b;
-    padding: 56px 24px 48px;
-    text-align: center;
-  }
-  .intencao-interno {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-  .intencao-pergunta {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3.5vw, 30px);
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(244,237,228,0.75);
-    margin-bottom: 10px;
-    letter-spacing: 0.02em;
-  }
-  .intencao-sub {
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 200;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(196,168,130,0.5);
-    margin-bottom: 36px;
+    color: rgba(244,237,228,0.85);
+    margin-bottom: 20px;
+    line-height: 1.35;
   }
   .intencao-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
-    gap: 12px;
-    margin-bottom: 28px;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    flex: 1;
   }
-  .intencao-btn {
+  .int-btn {
     background: rgba(250,247,243,0.05);
-    border: 1px solid rgba(250,247,243,0.1);
+    border: 1px solid rgba(250,247,243,0.09);
     border-radius: 6px;
-    padding: 18px 14px;
+    padding: 11px 10px;
     text-decoration: none;
-    text-align: left;
-    transition: all 0.25s ease;
-    display: block;
-  }
-  .intencao-btn:hover {
-    background: rgba(250,247,243,0.1);
-    border-color: rgba(196,168,130,0.4);
-    transform: translateY(-2px);
-  }
-  .intencao-btn-icone {
-    font-size: 22px;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .intencao-btn-texto {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-weight: 300;
-    color: #faf7f3;
-    display: block;
-    line-height: 1.3;
-    margin-bottom: 4px;
-  }
-  .intencao-btn-cats {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 200;
-    letter-spacing: 0.12em;
-    color: rgba(196,168,130,0.6);
-    display: block;
-  }
-  .intencao-direto {
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(244,237,228,0.3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .intencao-direto:hover { color: var(--terra); }
-  @media (max-width: 480px) {
-    .intencao-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-
-  /* INTENÇÃO NO HERO */
-  .hero-intencao {
-    position: relative;
-    z-index: 2;
-    margin-top: 40px;
-    width: 100%;
-    max-width: 560px;
-    animation: surgir 1s ease 1.6s forwards;
-    opacity: 0;
-  }
-  .hero-intencao-pergunta {
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 200;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(244,237,228,0.4);
-    margin-bottom: 14px;
-  }
-  .hero-intencao-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .hero-int-btn {
-    background: rgba(250,247,243,0.06);
-    border: 1px solid rgba(250,247,243,0.1);
-    border-radius: 6px;
-    padding: 12px 10px;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-  }
-  .hero-int-btn:hover {
-    background: rgba(250,247,243,0.12);
-    border-color: rgba(196,168,130,0.35);
-  }
-  .hint-icone { font-size: 18px; line-height: 1; }
-  .hint-texto {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    color: rgba(244,237,228,0.75);
-    line-height: 1.3;
-  }
-  .hero-intencao-direto {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 200;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(244,237,228,0.25);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .hero-intencao-direto:hover { color: var(--terra); }
-  @media (max-width: 400px) {
-    .hero-intencao-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-
-  /* INTENÇÃO NO HERO V2 */
-  .hero-intencao {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 580px;
-    animation: surgir 1s ease 1.0s forwards;
-    opacity: 0;
-  }
-  .hero-intencao-pergunta {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(17px, 3vw, 22px);
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(244,237,228,0.7);
-    margin-bottom: 6px;
-    letter-spacing: 0.02em;
-  }
-  .hero-intencao-sub {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 200;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(196,168,130,0.45);
-    margin-bottom: 20px;
-    display: block;
-  }
-  .hero-intencao-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .hero-int-btn {
-    background: rgba(250,247,243,0.06);
-    border: 1px solid rgba(250,247,243,0.1);
-    border-radius: 6px;
-    padding: 12px 10px;
-    text-decoration: none;
-    text-align: left;
     transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-  .hero-int-btn:hover {
-    background: rgba(250,247,243,0.12);
-    border-color: rgba(196,168,130,0.4);
+  .int-btn:hover {
+    background: rgba(250,247,243,0.11);
+    border-color: rgba(196,168,130,0.35);
     transform: translateY(-1px);
   }
-  .hint-icone { font-size: 16px; line-height: 1; }
-  .hint-texto {
+  .int-icone { font-size: 15px; line-height: 1; }
+  .int-texto {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
+    font-size: clamp(12px, 1.8vw, 15px);
     font-weight: 300;
-    color: rgba(244,237,228,0.9);
-    line-height: 1.2;
+    color: rgba(244,237,228,0.88);
+    line-height: 1.25;
   }
-  .hint-cats {
+  .int-cats {
     font-family: 'Jost', sans-serif;
     font-size: 9px;
     font-weight: 200;
-    letter-spacing: 0.08em;
-    color: rgba(196,168,130,0.55);
-    line-height: 1.4;
+    letter-spacing: 0.06em;
+    color: rgba(196,168,130,0.5);
+    line-height: 1.3;
   }
-  .hero-intencao-direto {
+  .int-ver-tudo {
+    margin-top: 12px;
     font-family: 'Jost', sans-serif;
     font-size: 10px;
     font-weight: 200;
@@ -560,43 +154,192 @@
     color: rgba(244,237,228,0.22);
     text-decoration: none;
     transition: color 0.2s;
-    display: block;
     text-align: center;
-    margin-top: 4px;
   }
-  .hero-intencao-direto:hover { color: var(--terra); }
-  .hero-divisor-sub {
-    width: 30px;
-    height: 1px;
-    background: var(--terra);
-    margin: 20px auto;
-    opacity: 0.3;
-    position: relative;
-    z-index: 2;
+  .int-ver-tudo:hover { color: var(--terra); }
+
+  /* Bloco direito — baralho direto */
+  .bloco-baralho {
+    background: var(--areia-pura);
+    padding: 36px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
   }
-  .hero-sub-bottom {
+  .baralho-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    opacity: 0.7;
+  }
+  .baralho-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-style: italic;
+    color: var(--azul);
+    line-height: 1.4;
+  }
+  .baralho-divisor { width: 30px; height: 1px; background: var(--terra); opacity: 0.4; }
+  .btn-baralho {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid rgba(44,95,122,0.35);
+    border-radius: 2px;
     font-family: 'Jost', sans-serif;
     font-size: 11px;
-    font-weight: 200;
-    color: rgba(244,237,228,0.35);
-    letter-spacing: 0.25em;
+    font-weight: 300;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 1.5s forwards;
-    opacity: 0;
+    color: var(--azul);
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
-  .hero-btn-bottom {
-    margin-top: 20px;
-    position: relative;
-    z-index: 2;
-    animation: surgir 1s ease 1.8s forwards;
-    opacity: 0;
+  .btn-baralho:hover { background: var(--azul); color: var(--areia-pura); border-color: var(--azul); }
+  .sawubona-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 22px);
+    font-style: italic;
+    color: var(--terra);
+    line-height: 1.4;
   }
-  @media (max-width: 400px) {
-    .hero-intencao-grid { grid-template-columns: repeat(2, 1fr); }
+  .sawubona-cta span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(44,95,122,0.45);
+    margin-top: 6px;
   }
 
+  /* Mobile — empilhar */
+  @media (max-width: 600px) {
+    .zona-escolha { grid-template-columns: 1fr; }
+    .bloco-intencao { border-right: none; border-bottom: 1px solid rgba(196,168,130,0.15); }
+    .intencao-grid { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .intencao-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── SAWUBONA / SHIKOBA — chamada secundária ──────────────────── */
+  .bloco-sawubona {
+    background: var(--azul);
+    padding: 52px 24px;
+    text-align: center;
+  }
+  .bloco-sawubona-interno { max-width: 680px; margin: 0 auto; }
+  .saw-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.55);
+    margin-bottom: 28px;
+  }
+  .saw-linha {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .saw-palavra {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 300;
+    color: var(--areia-pura);
+    letter-spacing: 0.06em;
+  }
+  .saw-def {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 2.2vw, 19px);
+    font-style: italic;
+    color: rgba(244,237,228,0.55);
+  }
+  .saw-divisor { width: 1px; height: 32px; background: rgba(196,168,130,0.35); margin: 18px auto; }
+  .shi-palavra {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 300;
+    color: var(--terra);
+    letter-spacing: 0.06em;
+  }
+  .saw-frase {
+    margin-top: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 21px);
+    font-style: italic;
+    color: rgba(244,237,228,0.65);
+    line-height: 1.7;
+  }
+  .saw-frase strong { color: var(--azul-claro); font-style: normal; }
+
+  /* ── SEÇÕES DE CONTEÚDO ───────────────────────────────────────── */
+  section { padding: 80px 24px; max-width: 780px; margin: 0 auto; }
+  .label {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 32px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 300; line-height: 1.2;
+    margin-bottom: 28px; color: var(--azul);
+  }
+  h2 em { font-style: italic; color: var(--terra); }
+  p { font-size: clamp(15px, 2vw, 17px); line-height: 1.9; color: var(--texto-suave); margin-bottom: 20px; }
+  .destaque {
+    border-left: 2px solid var(--terra);
+    padding-left: 24px; margin: 36px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic; color: var(--azul); line-height: 1.5;
+  }
+  .separador { border: none; border-top: 1px solid rgba(196,168,130,0.25); margin: 0; }
+
+  /* VERDADES */
+  .bloco-verdades { background: #1e3545; padding: 80px 24px; }
+  .bloco-verdades-interno { max-width: 780px; margin: 0 auto; }
+  .bloco-verdades .label { color: var(--terra); }
+  .bloco-verdades h2 { color: var(--areia-pura); }
+  .bloco-verdades h2 em { color: var(--azul-claro); }
+  .verdade { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(127,179,200,0.12); }
+  .verdade:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .verdade-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,3vw,24px); font-weight: 600; color: var(--areia-pura); margin-bottom: 10px; }
+  .verdade p { color: rgba(244,237,228,0.6); margin-bottom: 0; }
+
+  /* COMO FUNCIONA */
+  .passo { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(196,168,130,0.2); }
+  .passo:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .passo-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--terra); opacity: 0.5; line-height: 1; min-width: 48px; }
+  .passo h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--azul); margin-bottom: 8px; }
+  .passo p { margin-bottom: 0; font-size: 15px; }
+
+  /* FINAL */
+  .bloco-final { background: var(--azul-escuro); padding: 80px 24px; text-align: center; }
+  .bloco-final-interno { max-width: 600px; margin: 0 auto; }
+  .final-grande { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px,10vw,88px); font-weight: 300; font-style: italic; color: var(--areia-pura); line-height: 1; margin-bottom: 8px; }
+  .final-trad { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,2.5vw,22px); font-style: italic; color: rgba(244,237,228,0.45); margin-bottom: 40px; }
+  .final-frase { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,3vw,26px); font-style: italic; color: rgba(244,237,228,0.75); line-height: 1.6; }
+  .final-frase strong { color: var(--azul-claro); font-style: normal; }
+
+  /* RODAPÉ */
+  footer { background: #111d24; color: rgba(244,237,228,0.3); text-align: center; padding: 48px 24px; font-size: 12px; letter-spacing: 0.1em; }
+  footer .nome { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--areia-pura); display: block; margin-bottom: 10px; }
+  footer a { color: var(--azul-claro); text-decoration: none; }
+  footer .cvv { margin-top: 20px; font-size: 11px; color: rgba(244,237,228,0.22); }
 </style>
 </head>
 <body>
@@ -604,7 +347,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-logo">
-    <svg viewBox="0 0 200 100" width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 200 100" width="100" height="50" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="hL"><circle cx="78" cy="50" r="40"/></clipPath>
         <clipPath id="hR"><circle cx="108" cy="50" r="40"/></clipPath>
@@ -616,54 +359,66 @@
     </svg>
   </div>
   <h1 class="hero-titulo">Te <span>Vi</span></h1>
-  <p class="hero-tagline">Porque às vezes a pessoa só precisa saber que alguém a viu.</p>
-  <div class="hero-intencao">
-    <p class="hero-intencao-pergunta">Como você quer chegar nessa pessoa?</p>
-    <span class="hero-intencao-sub">escolha uma intenção</span>
-    <div class="hero-intencao-grid">
-      <a href="baralho.html#aniversario" class="hero-int-btn">
-        <span class="hint-icone">🤍</span>
-        <span class="hint-texto">Fazer sorrir</span>
-        <span class="hint-cats">Aniversário · Bebê · Formatura</span>
-      </a>
-      <a href="baralho.html#ansiedade" class="hero-int-btn">
-        <span class="hint-icone">🫂</span>
-        <span class="hint-texto">Ser presença</span>
-        <span class="hint-cats">Ansiedade · Burnout · Solidão</span>
-      </a>
-      <a href="baralho.html#luto" class="hero-int-btn">
-        <span class="hint-icone">🕊️</span>
-        <span class="hint-texto">Acolher</span>
-        <span class="hint-cats">Luto · Internação · Falência</span>
-      </a>
-      <a href="baralho.html#reconexao" class="hero-int-btn">
-        <span class="hint-icone">🧵</span>
-        <span class="hint-texto">Reabrir vínculo</span>
-        <span class="hint-cats">Desculpas · Reconexão</span>
-      </a>
-      <a href="baralho.html#invisiveis" class="hero-int-btn">
-        <span class="hint-icone">🌟</span>
-        <span class="hint-texto">Alguém precisa ler isso</span>
-        <span class="hint-cats">Cartas Invisíveis</span>
-      </a>
-      <a href="baralho.html#namorados" class="hero-int-btn">
-        <span class="hint-icone">✨</span>
-        <span class="hint-texto">Dia dos Namorados</span>
-        <span class="hint-cats">12 de junho</span>
-      </a>
-    </div>
-    <a href="baralho.html" class="hero-intencao-direto">ou ver todo o baralho →</a>
-  </div>
-
-  <div class="hero-btn-bottom">
-    <a href="baralho.html" class="btn">Escolha uma Carta!</a>
-  </div>
-
-  <div class="hero-divisor-sub"></div>
-  <p class="hero-sub-bottom">Sawubona · Shikoba</p>
+  <p class="hero-tagline">Cartas que chegam quando palavras faltam.</p>
+  <div class="hero-divisor"></div>
 </section>
 
+<!-- ZONA DE ESCOLHA -->
+<div class="zona-escolha">
 
+  <!-- BLOCO ESQUERDO — intenção -->
+  <div class="bloco-intencao">
+    <p class="bloco-label">Por onde começar</p>
+    <p class="bloco-titulo">Como você quer<br>chegar nessa pessoa?</p>
+    <div class="intencao-grid">
+      <a href="baralho.html#aniversario" class="int-btn">
+        <span class="int-icone">🤍</span>
+        <span class="int-texto">Fazer sorrir</span>
+        <span class="int-cats">Aniversário · Bebê · Formatura</span>
+      </a>
+      <a href="baralho.html#ansiedade" class="int-btn">
+        <span class="int-icone">🫂</span>
+        <span class="int-texto">Ser presença</span>
+        <span class="int-cats">Ansiedade · Burnout · Solidão</span>
+      </a>
+      <a href="baralho.html#luto" class="int-btn">
+        <span class="int-icone">🕊️</span>
+        <span class="int-texto">Acolher</span>
+        <span class="int-cats">Luto · Internação · Falência</span>
+      </a>
+      <a href="baralho.html#reconexao" class="int-btn">
+        <span class="int-icone">🧵</span>
+        <span class="int-texto">Reabrir vínculo</span>
+        <span class="int-cats">Desculpas · Reconexão</span>
+      </a>
+      <a href="baralho.html#invisiveis" class="int-btn">
+        <span class="int-icone">🌟</span>
+        <span class="int-texto">Alguém precisa ler isso</span>
+        <span class="int-cats">Cartas Invisíveis</span>
+      </a>
+      <a href="baralho.html#namorados" class="int-btn">
+        <span class="int-icone">✨</span>
+        <span class="int-texto">Dia dos Namorados</span>
+        <span class="int-cats">12 de junho</span>
+      </a>
+    </div>
+    <a href="baralho.html" class="int-ver-tudo">ou ver todo o baralho →</a>
+  </div>
+
+  <!-- BLOCO DIREITO — baralho direto -->
+  <div class="bloco-baralho">
+    <p class="baralho-label">Ir direto ao baralho</p>
+    <p class="baralho-titulo">Escolha uma carta.<br>Mande um Sawubona.</p>
+    <div class="baralho-divisor"></div>
+    <a href="baralho.html" class="btn-baralho">Ver todas as cartas</a>
+    <div class="sawubona-cta">
+      Sawubona: eu te vejo.
+      <br>Shikoba: então eu existo para você.
+      <span>Uma palavra que diz tudo.</span>
+    </div>
+  </div>
+
+</div>
 
 <hr class="separador">
 
@@ -678,4 +433,111 @@
 
 <hr class="separador">
 
-<!-- SAWUBONA E SHI
+<!-- SAWUBONA / SHIKOBA -->
+<div class="bloco-sawubona">
+  <div class="bloco-sawubona-interno">
+    <p class="saw-label">A origem</p>
+    <div class="saw-linha">
+      <span class="saw-palavra">Sawubona.</span>
+      <span class="saw-def">Eu te vejo. Você existe para mim — completamente.</span>
+    </div>
+    <div class="saw-divisor"></div>
+    <div class="saw-linha">
+      <span class="shi-palavra">Shikoba.</span>
+      <span class="saw-def">Então eu existo para você. Fui visto. Não estou só.</span>
+    </div>
+    <p class="saw-frase">
+      Quando alguém recebe uma carta do Te Vi,<br>
+      pode responder apenas: <strong>Shikoba.</strong><br>
+      Uma palavra que elimina o constrangimento de não saber o que responder.
+    </p>
+  </div>
+</div>
+
+<!-- VERDADES BRASILEIRAS -->
+<div class="bloco-verdades">
+  <div class="bloco-verdades-interno">
+    <p class="label">Por que o Brasil precisa disso</p>
+    <h2>O jeito brasileiro<br>de sentir <em>e de se calar.</em></h2>
+    <br>
+    <div class="verdade">
+      <div class="verdade-titulo">A dificuldade com o silêncio do cuidado</div>
+      <p>O brasileiro se expressa muito — mas quando não sabe o que dizer, some. O sumiço não é falta de amor. É falta de palavra. O Te Vi dá a palavra.</p>
+    </div>
+    <div class="verdade">
+      <div class="verdade-titulo">A vergonha de parecer dramático</div>
+      <p>Mandar uma mensagem longa e emotiva parece exagero. Apenas um like, parece descaso. Uma carta curta, escolhida com cuidado — é exatamente a medida certa.</p>
+    </div>
+    <div class="verdade">
+      <div class="verdade-titulo">O valor de ser percebido no ordinário</div>
+      <p>Não precisamos de elogios grandiosos. Uma mensagem que diz "percebi que sua semana foi pesada" vale mais que um discurso no aniversário.</p>
+    </div>
+    <div class="verdade">
+      <div class="verdade-titulo">A culpa por não manter contato</div>
+      <p>Muita gente pensa em alguém e não manda mensagem porque passou tempo demais. O Te Vi tem cartas para isso: "sumimos, mas não esqueci de você."</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <p class="label">Como funciona</p>
+  <h2>Simples como<br><em>um gesto de cuidado.</em></h2>
+  <br>
+  <div class="passo">
+    <div class="passo-num">1</div>
+    <div>
+      <h3>Escolha a intenção ou a situação</h3>
+      <p>Amigo doente, colega exausto, familiar distante, alguém que sumiu. Temos cartas para o cotidiano real.</p>
+    </div>
+  </div>
+  <div class="passo">
+    <div class="passo-num">2</div>
+    <div>
+      <h3>Abra a carta e sinta</h3>
+      <p>Cada carta tem seu próprio link — animada, elegante, com o verso do baralho revelando a mensagem linha por linha.</p>
+    </div>
+  </div>
+  <div class="passo">
+    <div class="passo-num">3</div>
+    <div>
+      <h3>Mande um Sawubona.</h3>
+      <p>A pessoa toca no link, vê o envelope, abre — e a mensagem se revela. Um gesto que diz: eu te vi.</p>
+    </div>
+  </div>
+  <div class="passo">
+    <div class="passo-num">4</div>
+    <div>
+      <h3>A resposta pode ser só isso</h3>
+      <p><strong style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--azul)">Shikoba.</strong> — Fui visto. Não estou só.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="separador">
+
+<!-- FINAL -->
+<div class="bloco-final">
+  <div class="bloco-final-interno">
+    <div class="final-grande">Shikoba.</div>
+    <p class="final-trad">Então eu existo para você.</p>
+    <p class="final-frase">
+      Porque quando alguém recebe um <strong>Sawubona</strong><br>
+      e responde <strong>Shikoba</strong> —<br>
+      o mundo fica um pouco menos solitário.
+    </p>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+  <span class="nome">Te Vi</span>
+  <p>Menos que um café. Mais duradouro que qualquer um.</p>
+  <p class="cvv">
+    Se você ou alguém que conhece está passando por um momento difícil,<br>
+    o <a href="https://cvv.org.br" target="_blank">CVV</a> atende 24h pelo telefone <strong style="color:rgba(244,237,228,0.4)">188</strong>.
+  </p>
+</footer>
+
+</body>
+</html>
