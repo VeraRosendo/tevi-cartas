@@ -151,7 +151,7 @@
     font-weight: 200;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(196,168,130,0.65);
+    color: rgba(244,237,228,0.22);
     text-decoration: none;
     transition: color 0.2s;
     text-align: center;
@@ -382,6 +382,16 @@
     .intencao-grid { grid-template-columns: 1fr 1fr; }
   }
 
+
+  /* FIX mobile saw-linha */
+  @media (max-width: 600px) {
+    .saw-linha { flex-direction: column; gap: 4px; text-align: center; }
+    .saw-palavra, .shi-palavra { font-size: 32px; }
+    .saw-def { font-size: 14px; }
+    .saw-frase { font-size: 14px; }
+    .bloco-sawubona { padding: 36px 20px; }
+  }
+
 </style>
 </head>
 <body>
@@ -433,10 +443,10 @@
         <span class="int-texto">Reabrir vínculo</span>
         <span class="int-cats">Desculpas · Reconexão</span>
       </a>
-      <a href="baralho.html#invisiveis" class="int-btn">
+      <a href="baralho.html#eutevejo" class="int-btn">
         <span class="int-icone">🌟</span>
         <span class="int-texto">Alguém precisa ler isso</span>
-        <span class="int-cats">Cartas Invisíveis</span>
+        <span class="int-cats">Eu Te Vejo</span>
       </a>
       <a href="baralho.html#namorados" class="int-btn">
         <span class="int-icone">✨</span>
@@ -453,6 +463,17 @@
     <p class="baralho-titulo">Escolha uma carta.<br>Mande um Sawubona.</p>
     <div class="baralho-divisor"></div>
     <a href="baralho.html" class="btn-baralho">Ver todas as cartas</a>
+
+    <!-- BANNER SAWUBONA MATINAL -->
+    <div style="background:linear-gradient(135deg,#1a2e3b,#2c5f7a);border-radius:10px;padding:16px 18px;text-align:left;width:100%;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(244,237,243,0.88);line-height:1.6;margin-bottom:10px;">
+        As cartas <strong style="font-style:normal;color:#C4A882;">Para mim</strong> e <strong style="font-style:normal;color:#C4A882;">Eu Te Vejo</strong> também existem para você.<br>
+        Todo dia, uma mensagem diferente para começar a manhã.<br>
+        <span style="font-size:12px;color:rgba(244,237,243,0.5);">Peça seu link pelo WhatsApp ao clicar em Compartilhar.</span>
+      </p>
+      <a href="https://wa.me/5527988728526?text=Oi%2C%20Te%20Vi%20%F0%9F%A4%8D%20Quero%20receber%20uma%20carta%20toda%20manh%C3%A3.%20Como%20funciona%3F" target="_blank" style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:white;background:#C4A882;border-radius:4px;padding:9px 16px;text-decoration:none;display:inline-block;">Quero meu link 🤍</a>
+    </div>
+
     <div class="sawubona-cta">
       Sawubona: eu te vejo.
       <br>Shikoba: então eu existo para você.
@@ -462,18 +483,7 @@
 
 </div>
 
-<hr class="separador">
 
-<!-- O QUE É -->
-<section>
-  <p class="label">O que é o Te Vi</p>
-  <h2>Você percebeu.<br><em>Nós ajudamos você a dizer.</em></h2>
-  <p>O Te Vi é um baralho de mensagens para situações do cotidiano. A pessoa escolhe a carta que expressa o que sente — e envia.</p>
-  <p>Não é para datas especiais. É para quando você percebe que alguém precisa saber que foi visto, lembrado, sentido.</p>
-  <div class="destaque">Quando o coração sabe, mas as palavras não saem — escolha uma carta.</div>
-</section>
-
-<hr class="separador">
 
 <!-- SAWUBONA / SHIKOBA -->
 <div class="bloco-sawubona">
@@ -496,67 +506,7 @@
   </div>
 </div>
 
-<!-- VERDADES BRASILEIRAS -->
-<div class="bloco-verdades">
-  <div class="bloco-verdades-interno">
-    <p class="label">Por que o Brasil precisa disso</p>
-    <h2>O jeito brasileiro<br>de sentir <em>e de se calar.</em></h2>
-    <br>
-    <div class="verdade">
-      <div class="verdade-titulo">A dificuldade com o silêncio do cuidado</div>
-      <p>O brasileiro se expressa muito — mas quando não sabe o que dizer, some. O sumiço não é falta de amor. É falta de palavra. O Te Vi dá a palavra.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">A vergonha de parecer dramático</div>
-      <p>Mandar uma mensagem longa e emotiva parece exagero. Apenas um like, parece descaso. Uma carta curta, escolhida com cuidado — é exatamente a medida certa.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">O valor de ser percebido no ordinário</div>
-      <p>Não precisamos de elogios grandiosos. Uma mensagem que diz "percebi que sua semana foi pesada" vale mais que um discurso no aniversário.</p>
-    </div>
-    <div class="verdade">
-      <div class="verdade-titulo">A culpa por não manter contato</div>
-      <p>Muita gente pensa em alguém e não manda mensagem porque passou tempo demais. O Te Vi tem cartas para isso: "sumimos, mas não esqueci de você."</p>
-    </div>
-  </div>
-</div>
 
-<!-- COMO FUNCIONA -->
-<section id="como-funciona">
-  <p class="label">Como funciona</p>
-  <h2>Simples como<br><em>um gesto de cuidado.</em></h2>
-  <br>
-  <div class="passo">
-    <div class="passo-num">1</div>
-    <div>
-      <h3>Escolha a intenção ou a situação</h3>
-      <p>Amigo doente, colega exausto, familiar distante, alguém que sumiu. Temos cartas para o cotidiano real.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">2</div>
-    <div>
-      <h3>Abra a carta e sinta</h3>
-      <p>Cada carta tem seu próprio link — animada, elegante, com o verso do baralho revelando a mensagem linha por linha.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">3</div>
-    <div>
-      <h3>Mande um Sawubona.</h3>
-      <p>A pessoa toca no link, vê o envelope, abre — e a mensagem se revela. Um gesto que diz: eu te vi.</p>
-    </div>
-  </div>
-  <div class="passo">
-    <div class="passo-num">4</div>
-    <div>
-      <h3>A resposta pode ser só isso</h3>
-      <p><strong style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--azul)">Shikoba.</strong> — Fui visto. Não estou só.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="separador">
 
 <!-- FINAL -->
 <div class="bloco-final">
@@ -566,7 +516,7 @@
     <p class="final-frase">
       Porque quando alguém recebe um <strong>Sawubona</strong><br>
       e responde <strong>Shikoba</strong> —<br>
-      o mundo fica um pouco menos solitário.
+      o mundo fica um pouco melhor.
     </p>
   </div>
 </div>
@@ -583,4 +533,5 @@
 
 </body>
 </html>
+
 
