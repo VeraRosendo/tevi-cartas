@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi · Shikoba</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1200;overflow:hidden;position:relative;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 50% 48%, rgba(196,168,130,0.18) 0%, transparent 65%),radial-gradient(ellipse at 50% 48%, rgba(180,130,60,0.10) 0%, transparent 40%);pointer-events:none;animation:pulsar 8s ease-in-out infinite alternate;}
+  @keyframes pulsar{from{opacity:0.7}to{opacity:1}}
+  body::after{content:'';position:fixed;inset:0;background-image:radial-gradient(circle, rgba(196,168,130,0.25) 1px, transparent 1px),radial-gradient(circle, rgba(196,168,130,0.15) 1px, transparent 1px);background-size:80px 80px, 130px 130px;background-position:0 0, 40px 40px;pointer-events:none;opacity:0.4;animation:derivar 30s linear infinite;}
+  @keyframes derivar{from{background-position:0 0, 40px 40px}to{background-position:80px 80px, 120px 120px}}
+  .carta{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;max-width:300px;position:relative;z-index:2;padding:0 24px;}
+  .linha{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,5vw,26px);font-weight:300;font-style:italic;color:rgba(250,247,243,0.92);line-height:1.75;letter-spacing:0.02em;text-align:center;opacity:0;display:block;}
+  .linha.pausa{height:clamp(10px,2.5vw,16px);display:block}
+  .shikoba-wrap{margin-top:clamp(28px,6vw,44px);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;}
+  .shikoba-ornamento{display:flex;align-items:center;gap:10px;}
+  .shikoba-linha{width:20px;height:1px;background:rgba(196,168,130,0.5)}
+  .shikoba-emoji{font-size:14px}
+  .shikoba-texto{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4.5vw,26px);font-weight:400;font-style:italic;color:rgba(196,168,130,0.9);letter-spacing:0.1em;}
+  .shikoba-sub{font-family:'Jost',sans-serif;font-size:10px;font-weight:200;color:rgba(196,168,130,0.5);letter-spacing:0.25em;text-transform:uppercase;margin-top:2px;}
+  .tevi{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-family:'Jost',sans-serif;font-size:9px;letter-spacing:0.35em;color:rgba(196,168,130,0.25);text-transform:uppercase;white-space:nowrap;opacity:0;animation:aparecer 1s ease forwards 0.5s;}
+  .link-wpp{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:rgba(196,168,130,0.45);letter-spacing:0.18em;text-decoration:none;white-space:nowrap;opacity:0;animation:aparecer 1s ease forwards 1s;}
+  @keyframes aparecer{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @keyframes surgir{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="carta">
+  <span class="linha" style="animation:surgir 1s ease forwards 0.8s">Tem gestos que chegam pequenos</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 2.0s">e pousam fundo.</span>
+  <span class="linha pausa"></span>
+  <span class="linha" style="animation:surgir 1s ease forwards 3.6s">O seu foi assim.</span>
+  <span class="linha pausa"></span>
+  <span class="linha" style="animation:surgir 1s ease forwards 5.2s">Você não precisava lembrar de mim —</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 6.4s">mas lembrou.</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 7.6s">Não precisava parar —</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 8.8s">mas parou.</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 10.0s">Não precisava me presentear</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 11.0s">com seu tempo —</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 12.0s">mas presenteou.</span>
+  <span class="linha pausa"></span>
+  <span class="linha" style="animation:surgir 1s ease forwards 13.6s">E nisso eu entendi:</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 14.8s">eu existo para você.</span>
+  <span class="linha pausa"></span>
+  <span class="linha" style="animation:surgir 1s ease forwards 16.2s">Obrigada por me fazer sentir</span>
+  <span class="linha" style="animation:surgir 1s ease forwards 17.2s">presente, parte de algo real.</span>
+
+  <div class="shikoba-wrap" style="animation:surgir 1.2s ease forwards 19s">
+    <div class="shikoba-ornamento">
+      <div class="shikoba-linha"></div>
+      <span class="shikoba-emoji">✨</span>
+      <div class="shikoba-linha"></div>
+    </div>
+    <div class="shikoba-texto">Shikoba. 🤍</div>
+    <div class="shikoba-sub">Então eu existo para você.</div>
+  </div>
+</div>
+
+<a href="https://wa.me/5527988728526?text=Quero+uma+carta+dessas" target="_blank" class="link-wpp">Quero uma carta dessas →</a>
+<div class="tevi">Te Vi · shikoba.com.br</div>
+
+</body>
+</html>
