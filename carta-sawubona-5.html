@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi · Sawubona Matinal · 05</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0d0d0d;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .tela{width:390px;height:692px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+  .linha{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:30px;color:#faf7f3;text-align:center;letter-spacing:0.03em;line-height:1.8;opacity:0}
+  .linha-reflexo{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:30px;color:#faf7f3;text-align:center;letter-spacing:0.03em;line-height:1.8;opacity:0;transform:scaleY(-1);filter:blur(1.5px);margin-bottom:16px}
+  .espaco{height:8px}
+  .desfecho{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:22px;color:#C4A882;text-align:center;letter-spacing:0.1em;opacity:0;margin-top:8px}
+  .desfecho-r{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:22px;color:#C4A882;text-align:center;letter-spacing:0.1em;opacity:0;transform:scaleY(-1);filter:blur(1.5px);margin-bottom:12px}
+  .icone{font-size:26px;opacity:0;margin-top:20px}
+  .marca{font-family:'Jost',sans-serif;font-weight:200;font-size:11px;color:#C4A882;letter-spacing:0.32em;text-transform:uppercase;opacity:0;margin-top:28px}
+  .link-wpp{font-family:'Jost',sans-serif;font-weight:300;font-size:11px;color:#C4A882;letter-spacing:0.18em;text-decoration:none;opacity:0;margin-top:10px;display:block;text-align:center}
+
+  @keyframes surgir{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes surgirR{from{opacity:0;transform:scaleY(-1) translateY(6px)}to{opacity:0.13;transform:scaleY(-1) translateY(0)}}
+  @keyframes surgirD{from{opacity:0}to{opacity:1}}
+  @keyframes surgirDR{from{opacity:0;transform:scaleY(-1)}to{opacity:0.13;transform:scaleY(-1)}}
+  @keyframes sumir{from{opacity:1}to{opacity:0}}
+  @keyframes sumirR{from{opacity:0.13}to{opacity:0}}
+
+  .l1{animation:surgir 1s ease forwards 0.6s,sumir 0.5s ease forwards 14s}
+  .r1{animation:surgirR 1s ease forwards 0.6s,sumirR 0.5s ease forwards 14s}
+  .l2{animation:surgir 1s ease forwards 2.8s,sumir 0.5s ease forwards 14s}
+  .r2{animation:surgirR 1s ease forwards 2.8s,sumirR 0.5s ease forwards 14s}
+  .l3{animation:surgir 1s ease forwards 5.0s,sumir 0.5s ease forwards 14s}
+  .r3{animation:surgirR 1s ease forwards 5.0s,sumirR 0.5s ease forwards 14s}
+  .l4{animation:surgir 1s ease forwards 7.4s,sumir 0.5s ease forwards 14s}
+  .r4{animation:surgirR 1s ease forwards 7.4s,sumirR 0.5s ease forwards 14s}
+  .d1{animation:surgirD 1s ease forwards 9.8s,sumir 0.5s ease forwards 14.5s}
+  .d1r{animation:surgirDR 1s ease forwards 9.8s,sumirR 0.5s ease forwards 14.5s}
+  .ic{animation:surgirD 0.8s ease forwards 11.2s,sumir 0.5s ease forwards 14.5s}
+  .ma{animation:surgirD 0.8s ease forwards 12s,sumir 0.5s ease forwards 15s}
+  .lw{animation:surgirD 0.8s ease forwards 12.6s,sumir 0.5s ease forwards 15s}
+</style>
+</head>
+<body>
+<div class="tela">
+  <p class="linha l1">Tem dias que o passado bate na porta.</p>
+  <p class="linha-reflexo r1">Tem dias que o passado bate na porta.</p>
+  <div class="espaco"></div>
+  <p class="linha l2">Deixa ele entrar,</p>
+  <p class="linha-reflexo r2">Deixa ele entrar,</p>
+  <p class="linha l2" style="margin-top:-14px">olha pra ele com calma, e lembra:</p>
+  <p class="linha-reflexo r2" style="margin-top:-14px">olha pra ele com calma, e lembra:</p>
+  <div class="espaco"></div>
+  <p class="linha l3">você viveu aquilo uma vez.</p>
+  <p class="linha-reflexo r3">você viveu aquilo uma vez.</p>
+  <div class="espaco"></div>
+  <p class="linha l4">E saiu.</p>
+  <p class="linha-reflexo r4">E saiu.</p>
+  <p class="desfecho d1">Sawubona. 🤍 Você se vê?</p>
+  <p class="desfecho-r d1r">Sawubona. 🤍 Você se vê?</p>
+  <p class="icone ic">🌿</p>
+  <p class="marca ma">Sawubona Matinal · Te Vi</p>
+  <a href="https://wa.me/5527988728526?text=Quero+uma+carta+dessas" target="_blank" class="link-wpp lw">Quero uma carta dessas →</a>
+</div>
+</body></html>
