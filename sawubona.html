@@ -7,160 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-
-  body{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    font-family:'Cormorant Garamond',serif;
-    background:#1a2535;
-    padding:48px 32px;
-    position:relative;
-    overflow:hidden;
-  }
-
-  /* fundo vivo — gradiente que respira */
-  body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(ellipse at 20% 20%, rgba(44,95,122,0.35) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 80%, rgba(196,168,130,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse at 60% 30%, rgba(100,140,160,0.12) 0%, transparent 50%);
-    pointer-events:none;
-    animation:respirar 12s ease-in-out infinite alternate;
-  }
-  @keyframes respirar{
-    from{opacity:0.7}
-    to{opacity:1}
-  }
-
-  /* data */
-  .data{
-    font-family:'Jost',sans-serif;
-    font-size:10px;
-    letter-spacing:0.35em;
-    color:rgba(196,168,130,0.5);
-    text-transform:uppercase;
-    text-align:center;
-    position:fixed;
-    top:32px;
-    left:50%;
-    transform:translateX(-50%);
-    white-space:nowrap;
-    opacity:0;
-    animation:aparecer 1.2s ease forwards 0.3s;
-  }
-
-  /* área da carta */
-  .carta{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    gap:0;
-    position:relative;
-    z-index:2;
-    max-width:320px;
-  }
-
-  /* linhas da carta */
-  .linha{
-    font-size:clamp(22px,6vw,32px);
-    font-weight:300;
-    font-style:italic;
-    color:rgba(250,247,243,0.92);
-    line-height:1.7;
-    letter-spacing:0.02em;
-    opacity:0;
-    display:block;
-  }
-
-  .linha.pausa{
-    height:clamp(12px,3vw,18px);
-    display:block;
-  }
-
-  /* shikoba */
-  .shikoba-wrap{
-    margin-top:clamp(28px,6vw,44px);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-    opacity:0;
-  }
-
-  .shikoba-linha{
-    width:24px;
-    height:1px;
-    background:rgba(196,168,130,0.4);
-  }
-
-  .shikoba-texto{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(18px,4vw,24px);
-    font-weight:300;
-    font-style:italic;
-    color:rgba(196,168,130,0.75);
-    letter-spacing:0.08em;
-  }
-
-  .shikoba-emoji{
-    font-size:16px;
-    margin-top:2px;
-  }
-
-  /* Te Vi rodapé */
-  .tevi{
-    position:fixed;
-    bottom:28px;
-    left:50%;
-    transform:translateX(-50%);
-    font-family:'Jost',sans-serif;
-    font-size:9px;
-    letter-spacing:0.35em;
-    color:rgba(196,168,130,0.3);
-    text-transform:uppercase;
-    opacity:0;
-    animation:aparecer 1s ease forwards 1s;
-    white-space:nowrap;
-  }
-
-  @keyframes aparecer{
-    from{opacity:0;transform:translateX(-50%) translateY(6px)}
-    to{opacity:1;transform:translateX(-50%) translateY(0)}
-  }
-
-  @keyframes surgir{
-    from{opacity:0;transform:translateY(10px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-
-  @keyframes dissolver{
-    from{opacity:1}
-    to{opacity:0}
-  }
+  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;background:#1a2535;padding:48px 32px;position:relative;overflow:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%, rgba(44,95,122,0.35) 0%, transparent 60%),radial-gradient(ellipse at 80% 80%, rgba(196,168,130,0.15) 0%, transparent 60%),radial-gradient(ellipse at 60% 30%, rgba(100,140,160,0.12) 0%, transparent 50%);pointer-events:none;animation:respirar 12s ease-in-out infinite alternate;}
+  @keyframes respirar{from{opacity:0.7}to{opacity:1}}
+  .data{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.35em;color:rgba(196,168,130,0.5);text-transform:uppercase;text-align:center;position:fixed;top:32px;left:50%;transform:translateX(-50%);white-space:nowrap;opacity:0;animation:aparecer 1.2s ease forwards 0.3s;}
+  .carta{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0;position:relative;z-index:2;max-width:320px;}
+  .linha{font-size:clamp(22px,6vw,32px);font-weight:300;font-style:italic;color:rgba(250,247,243,0.92);line-height:1.7;letter-spacing:0.02em;opacity:0;display:block;}
+  .linha.pausa{height:clamp(12px,3vw,18px);display:block;}
+  .shikoba-wrap{margin-top:clamp(28px,6vw,44px);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;}
+  .shikoba-linha{width:24px;height:1px;background:rgba(196,168,130,0.4);}
+  .shikoba-texto{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,24px);font-weight:300;font-style:italic;color:rgba(196,168,130,0.75);letter-spacing:0.08em;}
+  .shikoba-emoji{font-size:16px;margin-top:2px;}
+  .tevi{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-family:'Jost',sans-serif;font-size:9px;letter-spacing:0.35em;color:rgba(196,168,130,0.3);text-transform:uppercase;opacity:0;animation:aparecer 1s ease forwards 1s;white-space:nowrap;}
+  @keyframes aparecer{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @keyframes surgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes dissolver{from{opacity:1}to{opacity:0}}
 </style>
 </head>
 <body>
 
 <div class="data" id="data"></div>
-
 <div class="carta" id="carta"></div>
-
 <div class="tevi">Te Vi · shikoba.com.br</div>
 
 <script>
-// ─── CARTAS ────────────────────────────────────────────────────────────────
-// Cada carta = array de linhas. String vazia = pausa visual entre blocos.
-
 const CARTAS = [
-  // Cartas para mim
+  // Cartas para mim — originais
   [
     "Você não precisa",
     "provar nada hoje.",
@@ -217,7 +89,7 @@ const CARTAS = [
     "",
     "Estou aqui."
   ],
-  // Eu te vejo
+  // Eu te vejo — originais
   [
     "Você se esforçou muito.",
     "",
@@ -274,9 +146,61 @@ const CARTAS = [
     "Mais complexo.",
     "Mais bonito."
   ],
+  // Sawubona Matinal — superação (novas)
+  [
+    "Teve um tempo em que você",
+    "não sabia se ia aguentar.",
+    "",
+    "Aguentou.",
+    "",
+    "Não porque foi fácil —",
+    "porque você se fez forte.",
+    "",
+    "Quem sofreu merece toda a sua honra.",
+    "Quem chegou até aqui merece",
+    "todo o seu orgulho."
+  ],
+  [
+    "Você esteve lá.",
+    "",
+    "Viu tudo de perto —",
+    "a dor, o medo, a dúvida sobre si.",
+    "",
+    "E mesmo assim chegou aqui.",
+    "",
+    "Não como vítima.",
+    "Como testemunha. Como sobrevivente.",
+    "Como alguém que viveu, e venceu."
+  ],
+  [
+    "O que você viveu",
+    "não é quem você é.",
+    "",
+    "É de onde você veio.",
+    "",
+    "A sua versão que sofreu",
+    "merece ser vista com gentileza.",
+    "",
+    "Isso tem nome:",
+    "coragem. A sua coragem."
+  ],
+  [
+    "Você não é mais aquela história.",
+    "Você não é a vítima.",
+    "",
+    "Você é quem renasceu da dor."
+  ],
+  [
+    "Tem dias que o passado bate na porta.",
+    "",
+    "Deixa ele entrar,",
+    "olha pra ele com calma, e lembra:",
+    "",
+    "você viveu aquilo uma vez.",
+    "",
+    "E saiu."
+  ],
 ];
-
-// ─── LÓGICA DO DIA ─────────────────────────────────────────────────────────
 
 function getCartaDoDia() {
   const hoje = new Date();
@@ -293,24 +217,20 @@ function formatarData() {
   });
 }
 
-// ─── CONSTRUÇÃO DA CARTA ────────────────────────────────────────────────────
-
 function construir() {
   const carta = getCartaDoDia();
   const container = document.getElementById('carta');
   container.innerHTML = '';
 
-  // tempo base de surgimento de cada linha
-  const BASE = 1.2;      // início
-  const PASSO = 0.75;    // intervalo entre linhas
-  const PASSO_PAUSA = 0.3; // pausa visual menor
+  const BASE = 1.2;
+  const PASSO = 0.75;
+  const PASSO_PAUSA = 0.3;
 
   let t = BASE;
   let tempoFim = BASE;
 
   carta.forEach((linha) => {
     if (linha === '') {
-      // pausa visual
       const esp = document.createElement('span');
       esp.className = 'linha pausa';
       container.appendChild(esp);
@@ -326,9 +246,7 @@ function construir() {
     }
   });
 
-  // Shikoba aparece depois da última linha
   const shikobaTempo = tempoFim + 1.4;
-
   const sw = document.createElement('div');
   sw.className = 'shikoba-wrap';
   sw.style.animation = `surgir 1.2s ease forwards ${shikobaTempo}s`;
@@ -340,13 +258,10 @@ function construir() {
   container.appendChild(sw);
 }
 
-// ─── INIT ───────────────────────────────────────────────────────────────────
-
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('data').textContent = formatarData();
   construir();
 });
 </script>
-
 </body>
 </html>
