@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Vi — Como guardar seu link</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #2C5F7A;
+    --areia: #faf7f3;
+    --terra: #C4A882;
+    --fundo: #e8ddd3;
+    --texto: #111111;
+    --cinza: #7a6a5a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--fundo);
+    font-family: 'Jost', sans-serif;
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--azul);
+    padding: 40px 24px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .logo-tevi {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--areia);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .logo-tevi em { color: var(--terra); font-style: italic; }
+  .header-linha { width: 40px; height: 1px; background: var(--terra); opacity: 0.6; margin: 10px auto; }
+  .header-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--areia);
+    opacity: 0.9;
+    line-height: 1.4;
+  }
+  .header-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--terra);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* INTRO */
+  .intro {
+    background: var(--areia);
+    margin: 20px 16px;
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(44,95,122,0.08);
+    border-left: 3px solid var(--terra);
+  }
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--cinza);
+    line-height: 1.7;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    margin: 0 16px;
+    gap: 8px;
+  }
+  .tab {
+    flex: 1;
+    padding: 12px 8px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+  }
+  .tab.android {
+    background: rgba(44,95,122,0.12);
+    color: var(--azul);
+  }
+  .tab.iphone {
+    background: rgba(196,168,130,0.2);
+    color: var(--cinza);
+  }
+  .tab.ativo.android {
+    background: var(--azul);
+    color: var(--areia);
+  }
+  .tab.ativo.iphone {
+    background: var(--terra);
+    color: var(--areia);
+  }
+
+  /* PAINEL */
+  .painel {
+    background: var(--areia);
+    margin: 0 16px 24px;
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0 24px;
+    box-shadow: 0 8px 30px rgba(44,95,122,0.10);
+    display: none;
+  }
+  .painel.ativo { display: block; }
+
+  /* PASSOS */
+  .passo {
+    padding: 20px 20px 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .passo.visivel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .passo-numero {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .numero {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .android-num { background: var(--azul); color: var(--areia); }
+  .iphone-num { background: var(--terra); color: var(--areia); }
+  .passo-titulo {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--azul);
+    letter-spacing: 0.02em;
+  }
+  .passo-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--cinza);
+    line-height: 1.7;
+    margin-left: 44px;
+    margin-bottom: 16px;
+  }
+  .passo-desc strong {
+    color: var(--texto);
+    font-weight: 500;
+  }
+
+  /* ILUSTRAÇÃO */
+  .ilustracao {
+    margin: 0 44px 4px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(196,168,130,0.3);
+    background: #f5f0ea;
+  }
+
+  /* DIVISOR */
+  .divisor {
+    width: calc(100% - 40px);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,168,130,0.4), transparent);
+    margin: 4px 20px 0;
+  }
+
+  /* DESTAQUE FINAL */
+  .destaque-final {
+    margin: 8px 16px 0;
+    background: var(--azul);
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .destaque-final p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--areia);
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  .destaque-final .terra { color: var(--terra); }
+
+  /* BOTÃO WHATSAPP */
+  .btn-wpp {
+    display: block;
+    margin: 20px 16px 0;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-wpp:active { transform: scale(0.98); }
+  .btn-wpp span { display: block; font-size: 11px; opacity: 0.85; margin-top: 3px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* RODAPÉ */
+  .rodape {
+    text-align: center;
+    padding: 24px 16px 40px;
+  }
+  .rodape-linha { width: 32px; height: 1px; background: var(--terra); opacity: 0.5; margin: 0 auto 12px; }
+  .rodape p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--cinza);
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-tevi">Te <em>Vi</em></div>
+  <div class="header-linha"></div>
+  <div class="header-titulo">Como guardar seu link<br>para usar sempre que quiser</div>
+  <div class="header-sub">Passo a passo simples</div>
+</div>
+
+<div class="intro">
+  <p>Recebeu uma carta e quer guardar o link para acessar de novo — ou enviar para alguém especial? É simples. Siga os passos abaixo de acordo com o seu celular.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab android ativo" onclick="trocarAba('android')">📱 Android</button>
+  <button class="tab iphone" onclick="trocarAba('iphone')">🍎 iPhone</button>
+</div>
+
+<!-- ANDROID -->
+<div class="painel ativo" id="painel-android">
+
+  <div class="passo" id="a1">
+    <div class="passo-numero">
+      <div class="numero android-num">1</div>
+      <div class="passo-titulo">Abra o WhatsApp</div>
+    </div>
+    <p class="passo-desc">Na tela inicial do WhatsApp, toque no ícone de <strong>nova conversa</strong> (lápis ou bolha de chat, canto inferior direito).</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 110" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="110" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="44" fill="#2C5F7A"/>
+        <text x="16" y="27" font-family="sans-serif" font-size="13" fill="white" font-weight="bold">WhatsApp</text>
+        <circle cx="228" cy="88" r="18" fill="#25D366"/>
+        <text x="228" y="94" text-anchor="middle" font-family="sans-serif" font-size="18" fill="white">✏️</text>
+        <text x="16" y="68" font-family="sans-serif" font-size="11" fill="#7a6a5a">Conversas</text>
+        <line x1="0" y1="74" x2="260" y2="74" stroke="#e0d8ce" stroke-width="1"/>
+        <text x="130" y="95" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C4A882">← toque aqui</text>
+      </svg>
+    </div>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="a2">
+    <div class="passo-numero">
+      <div class="numero android-num">2</div>
+      <div class="passo-titulo">Selecione "Novo grupo"</div>
+    </div>
+    <p class="passo-desc">Na lista que aparecer, toque em <strong>"Novo grupo"</strong> no topo da tela.</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="100" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="36" fill="#2C5F7A"/>
+        <text x="16" y="22" font-family="sans-serif" font-size="12" fill="white">Nova conversa</text>
+        <rect x="0" y="36" width="260" height="32" fill="#e8f4ec"/>
+        <circle cx="28" cy="52" r="12" fill="#25D366"/>
+        <text x="28" y="57" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">👥</text>
+        <text x="50" y="56" font-family="sans-serif" font-size="12" fill="#2C5F7A" font-weight="bold">Novo grupo</text>
+        <text x="220" y="56" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C4A882">← aqui</text>
+        <line x1="0" y1="68" x2="260" y2="68" stroke="#e0d8ce" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="a3">
+    <div class="passo-numero">
+      <div class="numero android-num">3</div>
+      <div class="passo-titulo">Adicione o Te Vi ao grupo</div>
+    </div>
+    <p class="passo-desc">Na busca, digite <strong>Te Vi</strong> (ou o número <strong>27 98872-8526</strong> se ainda não tiver salvo). Toque no nome para selecionar e depois em <strong>"Próximo"</strong>.</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="100" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="36" fill="#2C5F7A"/>
+        <text x="16" y="22" font-family="sans-serif" font-size="12" fill="white">Adicionar participantes</text>
+        <rect x="12" y="42" width="236" height="24" rx="12" fill="white" stroke="#e0d8ce" stroke-width="1"/>
+        <text x="26" y="58" font-family="sans-serif" font-size="11" fill="#aaa">🔍  Te Vi</text>
+        <rect x="0" y="72" width="260" height="28" fill="white"/>
+        <circle cx="24" cy="86" r="10" fill="#2C5F7A" opacity="0.2"/>
+        <text x="42" y="90" font-family="sans-serif" font-size="11" fill="#2C5F7A">Te Vi  ✓</text>
+      </svg>
+    </div>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="a4">
+    <div class="passo-numero">
+      <div class="numero android-num">4</div>
+      <div class="passo-titulo">Dê um nome ao grupo</div>
+    </div>
+    <p class="passo-desc">Digite um nome como <strong>"Minhas cartas"</strong> ou <strong>"Sawubona"</strong> e toque em <strong>✓</strong> para criar.</p>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="a5">
+    <div class="passo-numero">
+      <div class="numero android-num">5</div>
+      <div class="passo-titulo">Cole o link no grupo</div>
+    </div>
+    <p class="passo-desc">Dentro do grupo, cole o link da carta que recebeu e envie. Ele ficará salvo no histórico para sempre.</p>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="a6">
+    <div class="passo-numero">
+      <div class="numero android-num">6</div>
+      <div class="passo-titulo">Remova o Te Vi do grupo</div>
+    </div>
+    <p class="passo-desc">Toque no nome do grupo no topo → <strong>role até encontrar o Te Vi</strong> → toque e segure o nome → <strong>"Remover do grupo"</strong>. O link continua salvo.</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="100" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="36" fill="#2C5F7A"/>
+        <text x="16" y="22" font-family="sans-serif" font-size="12" fill="white">Informações do grupo</text>
+        <rect x="0" y="36" width="260" height="32" fill="white"/>
+        <circle cx="24" cy="52" r="10" fill="#2C5F7A" opacity="0.2"/>
+        <text x="42" y="56" font-family="sans-serif" font-size="11" fill="#333">Te Vi</text>
+        <rect x="155" y="42" width="90" height="20" rx="4" fill="#fee2e2"/>
+        <text x="200" y="55" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#dc2626">Remover ✕</text>
+      </svg>
+    </div>
+  </div>
+
+</div>
+
+<!-- IPHONE -->
+<div class="painel" id="painel-iphone">
+
+  <div class="passo" id="i1">
+    <div class="passo-numero">
+      <div class="numero iphone-num">1</div>
+      <div class="passo-titulo">Abra o WhatsApp</div>
+    </div>
+    <p class="passo-desc">Na tela de conversas, toque no ícone de <strong>editar</strong> (lápis, canto superior direito).</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 110" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="110" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="44" fill="#2C5F7A"/>
+        <text x="16" y="27" font-family="sans-serif" font-size="13" fill="white" font-weight="bold">WhatsApp</text>
+        <text x="236" y="27" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white">✏️</text>
+        <text x="216" y="40" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#C4A882">← aqui</text>
+        <text x="16" y="68" font-family="sans-serif" font-size="11" fill="#7a6a5a">Conversas</text>
+        <line x1="0" y1="74" x2="260" y2="74" stroke="#e0d8ce" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="i2">
+    <div class="passo-numero">
+      <div class="numero iphone-num">2</div>
+      <div class="passo-titulo">Toque em "Novo grupo"</div>
+    </div>
+    <p class="passo-desc">No menu que aparecer, toque em <strong>"Novo grupo"</strong>.</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="100" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="36" fill="#2C5F7A"/>
+        <text x="16" y="22" font-family="sans-serif" font-size="12" fill="white">Nova conversa</text>
+        <rect x="0" y="36" width="260" height="32" fill="#e8f4ec"/>
+        <text x="16" y="56" font-family="sans-serif" font-size="12" fill="#2C5F7A" font-weight="bold">👥  Novo grupo</text>
+        <text x="220" y="56" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C4A882">← aqui</text>
+        <line x1="0" y1="68" x2="260" y2="68" stroke="#e0d8ce" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="i3">
+    <div class="passo-numero">
+      <div class="numero iphone-num">3</div>
+      <div class="passo-titulo">Adicione o Te Vi</div>
+    </div>
+    <p class="passo-desc">Busque por <strong>Te Vi</strong> ou pelo número <strong>27 98872-8526</strong>. Selecione e toque em <strong>"Próximo"</strong>.</p>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="i4">
+    <div class="passo-numero">
+      <div class="numero iphone-num">4</div>
+      <div class="passo-titulo">Nomeie o grupo e crie</div>
+    </div>
+    <p class="passo-desc">Digite um nome como <strong>"Minhas cartas"</strong> e toque em <strong>"Criar"</strong>.</p>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="i5">
+    <div class="passo-numero">
+      <div class="numero iphone-num">5</div>
+      <div class="passo-titulo">Cole o link no grupo</div>
+    </div>
+    <p class="passo-desc">Dentro do grupo, cole o link da carta e envie. Ele fica guardado no histórico para sempre.</p>
+    <div class="divisor"></div>
+  </div>
+
+  <div class="passo" id="i6">
+    <div class="passo-numero">
+      <div class="numero iphone-num">6</div>
+      <div class="passo-titulo">Remova o Te Vi do grupo</div>
+    </div>
+    <p class="passo-desc">Toque no nome do grupo → <strong>"Ver membros"</strong> → toque no nome Te Vi → <strong>"Remover do grupo"</strong>. O link continua salvo no histórico.</p>
+    <div class="ilustracao">
+      <svg viewBox="0 0 260 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="100" fill="#f0ebe3"/>
+        <rect x="0" y="0" width="260" height="36" fill="#C4A882"/>
+        <text x="16" y="22" font-family="sans-serif" font-size="12" fill="white">Membros do grupo</text>
+        <rect x="0" y="36" width="260" height="32" fill="white"/>
+        <circle cx="24" cy="52" r="10" fill="#C4A882" opacity="0.3"/>
+        <text x="42" y="56" font-family="sans-serif" font-size="11" fill="#333">Te Vi</text>
+        <rect x="155" y="42" width="90" height="20" rx="4" fill="#fee2e2"/>
+        <text x="200" y="55" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#dc2626">Remover ✕</text>
+      </svg>
+    </div>
+  </div>
+
+</div>
+
+<div class="destaque-final">
+  <p>O link fica guardado no histórico do grupo<br><span class="terra">para usar sempre que quiser. 🤍</span></p>
+</div>
+
+<a href="https://wa.me/5527988728526?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20para%20guardar%20meu%20link" class="btn-wpp">
+  💬 Precisa de ajuda? Fale com o Te Vi
+  <span>Toque para abrir o WhatsApp</span>
+</a>
+
+<div class="rodape">
+  <div class="rodape-linha"></div>
+  <p>Sawubona. · Te Vi · shikoba.com.br</p>
+</div>
+
+<script>
+  function trocarAba(aba) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativo'));
+    document.querySelectorAll('.painel').forEach(p => { p.classList.remove('ativo'); });
+    document.querySelector('.tab.' + aba).classList.add('ativo');
+    document.getElementById('painel-' + aba).classList.add('ativo');
+    setTimeout(() => animarPassos(aba), 50);
+  }
+
+  function animarPassos(aba) {
+    const passos = document.querySelectorAll('#painel-' + aba + ' .passo');
+    passos.forEach((p, i) => {
+      p.classList.remove('visivel');
+      setTimeout(() => p.classList.add('visivel'), i * 120);
+    });
+  }
+
+  // Animar Android ao carregar
+  window.addEventListener('load', () => animarPassos('android'));
+</script>
+</body>
+</html>
